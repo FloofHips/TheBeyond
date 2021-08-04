@@ -47,7 +47,7 @@ public class TheBeyond
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {

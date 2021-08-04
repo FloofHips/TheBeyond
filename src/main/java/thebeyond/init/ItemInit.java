@@ -1,7 +1,6 @@
 package thebeyond.init;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
 import thebeyond.ModItemGroup;
 
