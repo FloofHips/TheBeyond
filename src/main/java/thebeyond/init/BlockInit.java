@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 
 public class BlockInit {
 
-    public static final RegistryObject<Block> EXAMPLE_BLOCK = register("example_block", () -> new Block(AbstractBlock.Properties.of(Material.DECORATION).strength(2).harvestTool(ToolType.AXE).sound(SoundType.ANCIENT_DEBRIS)));
+    public static final RegistryObject<Block> PLATED_END_STONE = register("plated_end_stone", () -> new Block(AbstractBlock.Properties.of(Material.DECORATION).strength(2).harvestTool(ToolType.PICKAXE).sound(SoundType.ANCIENT_DEBRIS)));
 
 
     private static <T extends Block>RegistryObject<T> registerNoItem(String name, Supplier<T> block) {

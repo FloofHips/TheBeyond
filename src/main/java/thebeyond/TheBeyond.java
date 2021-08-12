@@ -76,7 +76,7 @@ public class TheBeyond
 
     // RenderLayer stuff
     private void clientSetup(final FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(BlockInit.EXAMPLE_BLOCK.get(), RenderType.cutout());
+ //       RenderTypeLookup.setRenderLayer(BlockInit.EXAMPLE_BLOCK.get(), RenderType.cutout());
     }
 
 }

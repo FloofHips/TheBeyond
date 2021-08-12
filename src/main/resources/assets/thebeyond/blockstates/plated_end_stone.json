@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "thebeyond:block/plated_end_stone",
+	"weight": 5
+      },
+      {
+        "model": "thebeyond:block/plated_end_stone1",
+	"weight": 2
+      },
+      {
+        "model": "thebeyond:block/plated_end_stone2",
+	"weight": 1
+      }
+    ]
+  }
+}

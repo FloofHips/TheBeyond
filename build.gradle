@@ -126,6 +126,11 @@ dependencies {
     // compile "some.group:artifact:version:classifier"
     // compile "some.group:artifact:version"
 
+
+//    implementation fg.deobf("com.minecraftabnormals:abnormals-core:1.16.5-3.2.0")
+
+
+
     // Real examples
     // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
     // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
@@ -170,8 +175,12 @@ publishing {
         }
     }
     repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
-        }
+        maven {url "file:///${project.projectDir}/mcmodsrepo" }
     }
 }
+
+//repositories {
+//    maven {
+//        url "https://maven.jaackson.me"
+//    }
+//}
