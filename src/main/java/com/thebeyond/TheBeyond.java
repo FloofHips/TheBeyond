@@ -1,5 +1,6 @@
 package com.thebeyond;
 
+import com.thebeyond.init.TBBiomes;
 import com.thebeyond.init.TBBlocks;
 import com.thebeyond.init.TBEntities;
 import com.thebeyond.init.TBItems;
@@ -39,6 +40,7 @@ public class TheBeyond {
         TBBlocks.BLOCKS.register(modEventBus);
         TBItems.ITEMS.register(modEventBus);
         TBEntities.ENTITIES.register(modEventBus);
+        TBBiomes.BIOMES.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
