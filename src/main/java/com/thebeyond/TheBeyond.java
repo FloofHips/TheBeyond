@@ -3,9 +3,7 @@ package com.thebeyond;
 import com.thebeyond.init.TBBlocks;
 import com.thebeyond.init.TBEntities;
 import com.thebeyond.init.TBItems;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -18,9 +16,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.function.Supplier;
-
-import static net.minecraftforge.client.event.EntityRenderersEvent.RegisterRenderers;
+import static net.minecraftforge.registries.ForgeRegistries.BLOCKS;
 
 @Mod(TheBeyond.MOD_ID)
 public class TheBeyond {
@@ -57,15 +53,15 @@ public class TheBeyond {
             @OnlyIn(Dist.CLIENT)
             public ItemStack makeIcon() {
 
-                return new ItemStack(TBItems.MAGNETITE.get());
+                return new ItemStack(BLOCKS.getValue(new ResourceLocation(MOD_ID,"pearl_block")));
             }
         };
     }
 
-    //TODO
-    private static <T extends Entity, V extends T> void registerEntityRenderingHandler(RegisterRenderers event, Supplier<EntityType<V>> type, EntityRendererProvider<T> renderer) {
-
-        event.registerEntityRenderer(type.get(), renderer);
-    }
+    ////TODO
+    //private static <T extends Entity, V extends T> void registerEntityRenderingHandler(RegisterRenderers event, Supplier<EntityType<V>> type, EntityRendererProvider<T> renderer) {
+    //
+    //    event.registerEntityRenderer(type.get(), renderer);
+    //}
 
 }
