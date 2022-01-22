@@ -33,79 +33,153 @@ public class ClientEvents {
 
         BlockColors colors = event.getBlockColors();
         colors.register((state, reader, pos, tintIndex) -> {
-         if (pos != null) {
-            double NoiseValue = (double) ((Mth.sin(0.3F * pos.getX() + 0.1F * pos.getY() + 0.4F * pos.getZ() + (float) noise.getValue(pos.getX() * 0.1F, pos.getY() * 0.1F, pos.getZ() * 0.1F) * 3F)));
+    /*     if (pos != null) {
+         //   double NoiseValue = (double) ((Mth.sin(0.3F * pos.getX() + 0.1F * pos.getY() + 0.4F * pos.getZ() + (float) noise.getValue(pos.getX() * 0.1F, pos.getY() * 0.1F, pos.getZ() * 0.1F) * 3F)));
+                double NoiseValue = (tri((0.048F * pos.getX() + 0.016F * pos.getY() + 0.064F * pos.getZ()) +
+                                    ((float) noise.getValue(pos.getX() * 0.05F, pos.getY() * 0.05F, pos.getZ() * 0.05F)) *
+                                    ((float) noise.getValue(pos.getX() * 0.1F, pos.getY() * 0.1F, pos.getZ() * 0.1F))));
             double XRLimit = 1.0;
             double XLLimit = 0.5;
 
-            int RedRLimit = 200;
-            int GreenRLimit = 200;
-            int BlueRLimit = 200;
+            int LeftColor = 0xFFFFFF;
+            int RightColor = 0xFFFFFF;
 
-            int RedLLimit = 100;
-            int GreenLLimit = 100;
-            int BlueLLimit = 100;
+            int PearlYellow = 	0xE1EDD8;
+            int PearlGreen =	0xBBD9C5;
+            int PearlPink =	    0xD6CBD2;
+            int PearlPurple =	0xAEB8D2;
+            int PearlBlue = 	0xA9CAD1;
 
-            if (NoiseValue>=(-1) && NoiseValue<=(-0.5))
+            int RedRLimit;
+            int GreenRLimit;
+            int BlueRLimit;
+
+            int RedLLimit;
+            int GreenLLimit;
+            int BlueLLimit;
+
+            if (NoiseValue>=(0) && NoiseValue<=(0.22))
             {
-                XRLimit = -0.5;
-                XLLimit = -1.0;
-
-                RedRLimit =      168;
-                GreenRLimit =    200;
-                BlueRLimit =     207;
-
-                RedLLimit =      202;
-                GreenLLimit =    222;
-                BlueLLimit =     234;
+                XRLimit = 0.22;
+                XLLimit = 0.0;
+                LeftColor = PearlYellow;
+                RightColor = PearlGreen;
             }
-            else if (NoiseValue>(-0.5) && NoiseValue<=(0))
+            else if (NoiseValue>(0.22) && NoiseValue<=(0.5))
             {
-                XRLimit = 0.0;
-                XLLimit = -0.5;
-
-                RedRLimit =     255;
-                GreenRLimit =   227;
-                BlueRLimit =    248;
-
-                RedLLimit =     168;
-                GreenLLimit =   200;
-                BlueLLimit =    207;
+                XRLimit = 0.5;
+                XLLimit = 0.22;
+                LeftColor = PearlGreen;
+                RightColor = PearlPink;
             }
-             else if (NoiseValue>(0) && NoiseValue<=(0.7))
-             {
-                 XRLimit = 0.5;
-                 XLLimit = 0.0;
-
-                 RedRLimit =    202;
-                 GreenRLimit =  234;
-                 BlueRLimit =   221;
-
-                 RedLLimit =    255;
-                 GreenLLimit =  227;
-                 BlueLLimit =   248;
-             }
-             else if (NoiseValue>(0.7) && NoiseValue<=(1))
-             {
-                 XRLimit = 1.0;
-                 XLLimit = 0.5;
-
-                 RedRLimit =    239;
-                 GreenRLimit =  250;
-                 BlueRLimit =   218;
-
-                 RedLLimit =    202;
-                 GreenLLimit =  234;
-                 BlueLLimit =   221;
+             else if (NoiseValue>(0.5) && NoiseValue<=(0.72)) {
+                XRLimit = 0.72;
+                XLLimit = 0.5;
+                LeftColor = PearlPink;
+                RightColor = PearlPurple;
+            }
+             else if (NoiseValue>(0.72) && NoiseValue<=(1)) {
+                XRLimit = 1.0;
+                XLLimit = 0.72;
+                LeftColor = PearlPurple;
+                RightColor = PearlBlue;
              }
 
-             int Rvalue = (int) ((( (NoiseValue - XRLimit) * (RedLLimit - RedRLimit))*1.0 / (XLLimit - XRLimit)*1.0) + RedRLimit);
-             int Gvalue = (int) ((( (NoiseValue - XRLimit) * (GreenLLimit - GreenRLimit))*1.0 / (XLLimit - XRLimit)*1.0) + GreenRLimit);
-             int Bvalue = (int) ((( (NoiseValue - XRLimit) * (BlueLLimit - BlueRLimit))*1.0 / (XLLimit - XRLimit)*1.0) + BlueRLimit);
+             RedRLimit =    RightColor / 10000;
+             GreenRLimit =  (RightColor / 100) % 100;
+             BlueRLimit =   RightColor % 100;
+
+             RedLLimit =    LeftColor / 10000;
+             GreenLLimit =  (LeftColor / 100) % 100;
+             BlueLLimit =   LeftColor % 100;
+
+             int Rvalue = (int) ((( (NoiseValue - XRLimit) * (RedLLimit - RedRLimit))*1.0 / (XLLimit - XRLimit)) + RedLLimit);
+             int Gvalue = (int) ((( (NoiseValue - XRLimit) * (GreenLLimit - GreenRLimit))*1.0 / (XLLimit - XRLimit)) + GreenLLimit);
+             int Bvalue = (int) ((( (NoiseValue - XRLimit) * (BlueLLimit - BlueRLimit))*1.0 / (XLLimit - XRLimit)) + BlueLLimit);
 
              return (Rvalue) << 16 | (Gvalue) << 8 | (Bvalue);
          }
-         return 0xFFFFFF;
+         return 0xFFFFFF;*/
+
+
+            if (pos != null) {
+                //   double NoiseValue = (double) ((Mth.sin(0.3F * pos.getX() + 0.1F * pos.getY() + 0.4F * pos.getZ() + (float) noise.getValue(pos.getX() * 0.1F, pos.getY() * 0.1F, pos.getZ() * 0.1F) * 3F)));
+                double NoiseValue = (tri((0.048F * pos.getX() + 0.016F * pos.getY() + 0.064F * pos.getZ()) +
+                        ((float) noise.getValue(pos.getX() * 0.05F, pos.getY() * 0.05F, pos.getZ() * 0.05F)) *
+                        ((float) noise.getValue(pos.getX() * 0.1F, pos.getY() * 0.1F, pos.getZ() * 0.1F))));
+                double XRLimit = 1.0;
+                double XLLimit = 0.5;
+
+                int RedRLimit = 200;
+                int GreenRLimit = 200;
+                int BlueRLimit = 200;
+
+                int RedLLimit = 100;
+                int GreenLLimit = 100;
+                int BlueLLimit = 100;
+
+                if (NoiseValue>=(0) && NoiseValue<=(0.22))
+                {
+                    XRLimit = 0.22;
+                    XLLimit = 0.0;
+                    //purple
+                    RedRLimit =      /*174;*/    168;
+                    GreenRLimit =    /*184;*/    200;
+                    BlueRLimit =     /*210;*/    207;
+                    //blue
+                    RedLLimit =      /*169;*/    202;
+                    GreenLLimit =    /*202;*/    222;
+                    BlueLLimit =     /*209;*/    234;
+                }
+                else if (NoiseValue>(0.22) && NoiseValue<=(0.5))
+                {
+                    XRLimit = 0.5;
+                    XLLimit = 0.22;
+                    //pink
+                    RedRLimit =     /*214;*/    255;
+                    GreenRLimit =   /*203;*/    227;
+                    BlueRLimit =    /*210;*/    248;
+                    //purple
+                    RedLLimit =     /*174;*/    168;
+                    GreenLLimit =   /*184;*/    200;
+                    BlueLLimit =    /*210;*/    207;
+                }
+                else if (NoiseValue>(0.5) && NoiseValue<=(0.72))
+                {
+                    XRLimit = 0.72;
+                    XLLimit = 0.5;
+                    //green
+                    RedRLimit =    /*187;*/     202;
+                    GreenRLimit =  /*217;*/     234;
+                    BlueRLimit =   /*197;*/     221;
+                    //pink
+                    RedLLimit =    /*214;*/     255;
+                    GreenLLimit =  /*203;*/     227;
+                    BlueLLimit =   /*210;*/     248;
+                }
+                else if (NoiseValue>(0.72) && NoiseValue<=(1))
+                {
+                    XRLimit = 1.0;
+                    XLLimit = 0.72;
+                    //yellow
+                    RedRLimit =    /*225;*/     239;
+                    GreenRLimit =  /*237;*/     250;
+                    BlueRLimit =   /*216;*/     218;
+                    //green
+                    RedLLimit =    /*187;*/     202;
+                    GreenLLimit =  /*217;*/     234;
+                    BlueLLimit =   /*197;*/     221;
+                }
+
+                int Rvalue = (int) ((( (NoiseValue - XRLimit) * (RedLLimit - RedRLimit))*1.0 / (XLLimit - XRLimit)*1.0) + RedRLimit);
+                int Gvalue = (int) ((( (NoiseValue - XRLimit) * (GreenLLimit - GreenRLimit))*1.0 / (XLLimit - XRLimit)*1.0) + GreenRLimit);
+                int Bvalue = (int) ((( (NoiseValue - XRLimit) * (BlueLLimit - BlueRLimit))*1.0 / (XLLimit - XRLimit)*1.0) + BlueRLimit);
+
+                return (Rvalue) << 16 | (Gvalue) << 8 | (Bvalue);
+            }
+            return 0xFFFFFF;
+
+
         }, TBBlocks.PEARL_BLOCK.get());
      }
 
