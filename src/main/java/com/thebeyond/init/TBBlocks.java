@@ -1,6 +1,7 @@
 package com.thebeyond.init;
 
 import com.thebeyond.TheBeyond;
+import com.thebeyond.blocks.PolarAntenna;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -14,6 +15,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
+import static com.thebeyond.TheBeyond.MOD_ID;
 import static com.thebeyond.TheBeyond.creativeTab;
 import static com.thebeyond.init.TBItems.ITEMS;
 
@@ -21,9 +23,11 @@ public class TBBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, TheBeyond.MOD_ID);
 
-    public static final RegistryObject<Block> PEARL_BLOCK = registerBlockAndItem("pearl_block",
-            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_WHITE).strength(1.5F, 1.5F).sound(SoundType.STONE).requiresCorrectToolForDrops(),
-            new Item.Properties().tab(creativeTab));
+    public static final RegistryObject<Block> PEARL_BLOCK = registerBlockAndItem("pearl_block", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_WHITE).friction(0.98F).strength(1.5F, 1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops(), new Item.Properties().tab(creativeTab));
+    public static final RegistryObject<Block> FERROUS_CATALYST = registerBlockAndItem("ferrous_catalyst", BlockBehaviour.Properties.of(Material.STONE).strength(1.5F, 1.5F).sound(SoundType.LODESTONE).requiresCorrectToolForDrops(),new Item.Properties().tab(creativeTab));
+    public static final RegistryObject<Block> FERROPILLAR = registerBlockAndItem("ferropillar", BlockBehaviour.Properties.of(Material.STONE).strength(1.5F, 1.5F).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops(),new Item.Properties().tab(creativeTab));
+    public static final RegistryObject<Block> PLATE_BLOCK = registerBlockAndItem("plate_block", BlockBehaviour.Properties.of(Material.STONE).strength(1.5F, 1.5F).sound(SoundType.LANTERN).requiresCorrectToolForDrops(),new Item.Properties().tab(creativeTab));
+    public static final RegistryObject<Block> PLATED_END_STONE = registerBlockAndItem("plated_end_stone", BlockBehaviour.Properties.of(Material.STONE).strength(1.5F, 1.5F).sound(SoundType.ANCIENT_DEBRIS).requiresCorrectToolForDrops(),new Item.Properties().tab(creativeTab));
 
     public static RegistryObject<Block> registerBlockAndItem(String id, Supplier<Block> blockSupp, Supplier<Item> itemSupp) {
 
@@ -34,7 +38,7 @@ public class TBBlocks {
     public static RegistryObject<Block> registerBlockAndItem(String id, Supplier<Block> blockSupp, Item.Properties itemProps) {
 
         RegistryObject<Block> block = BLOCKS.register(id, blockSupp);
-        ITEMS.register(id, () -> new BlockItem(block.get(), itemProps));
+        ITEMS.register(id, () -> new BlockItem(block.get(), new Item.Properties().tab(creativeTab)));
         return block;
     }
 

@@ -1,10 +1,19 @@
 {
+  "temperature": 2,
+  "downfall": 0,
+  "precipitation": "none",
+  "category": "nether",
   "effects": {
+    "sky_color": 7254527,
+    "fog_color": 6840176,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "ambient_sound": "minecraft:ambient.basalt_deltas.loop",
     "mood_sound": {
-      "sound": "minecraft:ambient.cave",
+      "sound": "minecraft:ambient.basalt_deltas.mood",
       "tick_delay": 6000,
       "block_search_extent": 8,
-      "offset": 2.0
+      "offset": 2
     },
     "additions_sound": {
       "sound": "minecraft:ambient.basalt_deltas.additions",
@@ -18,46 +27,15 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:portal"
+        "type": "minecraft:white_ash"
       },
       "probability": 0.118093334
-    },
-    "ambient_sound": "minecraft:ambient.basalt_deltas.loop",
-    "sky_color": 7254527,
-    "fog_color": 6840176,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    }
   },
-  "carvers": {
-    "air": [
-      "minecraft:nether_cave"
-    ]
-  },
-  "features": [
-    [],
-    [],
-    [],
-    [],
-    [
-      "minecraft:delta",
-      "minecraft:pointed_dripstone",
-      "minecraft:large_dripstone"
-    ],
-    [],
-    [],
-    [
-      "minecraft:basalt_blobs",
-      "minecraft:spring_closed_double",
-      "minecraft:ore_gold_deltas",
-      "minecraft:ore_quartz_deltas",
-      "minecraft:ore_ancient_debris_large",
-      "minecraft:ore_debris_small"
-    ]
-  ],
   "spawners": {
     "monster": [
       {
-        "type": "minecraft:enderman",
+        "type": "minecraft:ghast",
         "weight": 40,
         "minCount": 1,
         "maxCount": 1
@@ -85,8 +63,29 @@
     "misc": []
   },
   "spawn_costs": {},
-  "precipitation": "none",
-  "temperature": 2.0,
-  "downfall": 0.0,
-  "category": "nether"
+  "carvers": {
+    "air": [
+      "minecraft:nether_cave"
+    ]
+  },
+  "features": [
+    [   "the_beyond:void_puddle"
+    ],
+    [],
+    [],
+    [
+	"the_beyond:magnetic_pillar"
+    ],
+    [],
+    [],
+    [],
+    [
+      "minecraft:glowstone_extra",
+      "minecraft:glowstone",
+      "minecraft:brown_mushroom_nether",
+      "minecraft:red_mushroom_nether",
+      "the_beyond:magnolilly",
+      "minecraft:ore_debris_small"
+    ]
+  ]
 }

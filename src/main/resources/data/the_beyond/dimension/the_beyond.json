@@ -10,10 +10,22 @@
             "weirdness": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
+            "humidity": 0.0,
+            "continentalness": 0.0
+          },
+          "biome": "the_beyond:pearlescent_planes"
+        },
+        {
+          "parameters": {
+            "erosion": 0.0,
+            "depth": 0.0,
+            "weirdness": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
             "humidity": -0.5,
             "continentalness": 0.0
           },
-          "biome": "thebeyond:pearlescent_planes"
+          "biome": "the_beyond:magnetic_field"
         },
         {
           "parameters": {
@@ -23,18 +35,6 @@
             "offset": 0.0,
             "temperature": 0.4,
             "humidity": 0.0,
-            "continentalness": 0.0
-          },
-          "biome": "thebeyond:magnetic_field"
-        },
-        {
-          "parameters": {
-            "erosion": 0.0,
-            "depth": 0.0,
-            "weirdness": 0.0,
-            "offset": 0.375,
-            "temperature": 0.0,
-            "humidity": 0.5,
             "continentalness": 0.0
           },
           "biome": "minecraft:crimson_forest"
@@ -56,9 +56,9 @@
             "erosion": 0.0,
             "depth": 0.0,
             "weirdness": 0.0,
-            "offset": 0.375,
-            "temperature": 0.0,
-            "humidity": 0.5,
+            "offset": 0.175,
+            "temperature": -0.5,
+            "humidity": 0.0,
             "continentalness": 0.0
           },
           "biome": "minecraft:warped_forest"
@@ -67,7 +67,7 @@
       "type": "minecraft:multi_noise"
     },
     "seed": 0,
-    "settings": "thebeyond:beyond",
+    "settings": "the_beyond:beyond",
     "type": "minecraft:noise"
   }
 }
