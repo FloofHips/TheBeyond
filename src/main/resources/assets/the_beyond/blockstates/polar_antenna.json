@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "imbalance=none": {
+            "model": "minecraft:block/sweet_berry_bush_stage0"
+        },
+        "imbalance=low": {
+            "model": "minecraft:block/sweet_berry_bush_stage1"
+        },
+        "imbalance=medium": {
+            "model": "minecraft:block/sweet_berry_bush_stage2"
+        },
+        "imbalance=high": {
+            "model": "minecraft:block/sweet_berry_bush_stage3"
+        }
+    }
+}

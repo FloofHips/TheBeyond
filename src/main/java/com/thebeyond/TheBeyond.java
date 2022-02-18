@@ -9,6 +9,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -26,10 +27,7 @@ public class TheBeyond {
 
     public static final String MOD_ID = "the_beyond";
 
-    public static CreativeModeTab creativeTab;
-
     public TheBeyond() {
-
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
@@ -48,16 +46,16 @@ public class TheBeyond {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-
-        creativeTab = new CreativeModeTab(-1, MOD_ID) {
-
-            @Override
-            @OnlyIn(Dist.CLIENT)
-            public ItemStack makeIcon() {
-
-                return new ItemStack(BLOCKS.getValue(new ResourceLocation(MOD_ID,"pearl_block")));
-            }
-        };
+//
+//        creativeTab = new CreativeModeTab(-1, MOD_ID) {
+//
+//            @Override
+//            @OnlyIn(Dist.CLIENT)
+//            public ItemStack makeIcon() {
+//
+//                return new ItemStack(BLOCKS.getValue(new ResourceLocation(MOD_ID,"pearl_block")));
+//            }
+//        };
     }
 
     ////TODO
