@@ -46,6 +46,7 @@ public class PolarAntenna extends Block {
         builder.add(IMBALANCE, CARRIER, COOLDOWN);
     }
 
+    //updates state if entity inside
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         if (!pLevel.isClientSide) {
             if ((pState.getValue(IMBALANCE) == Imbalance.NONE) && (pState.getValue(COOLDOWN) == false)) {
@@ -59,11 +60,12 @@ public class PolarAntenna extends Block {
             }
         }
     }
-
+    //resets cooldown after 20 ticks
     public void resetCoolDown(BlockState pState, ServerLevel pLevel, BlockPos pPos){
         pLevel.setBlockAndUpdate(pPos, pState.setValue(COOLDOWN, false));
     }
 
+    //scheduled ticks
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
         this.resetCoolDown(pState,pLevel,pPos);
         if (pState.getValue(IMBALANCE) == Imbalance.SEEKING){
@@ -71,6 +73,7 @@ public class PolarAntenna extends Block {
         }
     }
 
+    //sets the imbalance and schedules tick
     private void setImbalanceAndScheduleTick(BlockState pState, Level pLevel, BlockPos pPos, Imbalance pImbalance, @Nullable SoundEvent pSound) {
         if (pSound != null) {
             playImbalanceSound(pLevel, pPos, pSound);
@@ -83,19 +86,22 @@ public class PolarAntenna extends Block {
         setImbalance(pState, pLevel, pPos, pImbalance);
     }
 
+    //plays a sound
     private static void playImbalanceSound(Level pLevel, BlockPos pPos, SoundEvent pSound) {
         float f = Mth.randomBetween(pLevel.random, 0.8F, 1.2F);
         pLevel.playSound((Player)null, pPos, pSound, SoundSource.BLOCKS, 1.0F, f);
     }
 
+    //sets the state
     private static void setImbalance(BlockState pState, Level pLevel, BlockPos pPos, Imbalance pImbalance) {
         pLevel.setBlockAndUpdate(pPos, pState.setValue(COOLDOWN, true).setValue(IMBALANCE, pImbalance));
     }
-
+    //not done yet, supposed to reset the states after a while
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
         this.tick(pState, pLevel, pPos, pRandom);
     }
 
+    //sets a random nearby antenna to seeking; not done
     private void startSeeking(BlockState pState, Level pLevel, BlockPos pPos) {
 
         if (pState.getValue(IMBALANCE) == Imbalance.SEEKING){
