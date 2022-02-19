@@ -33,7 +33,7 @@ public class PolarAntenna extends Block {
         Array.put(Imbalance.LOW, 20);
         Array.put(Imbalance.MEDIUM, 20);
         Array.put(Imbalance.HIGH, 20);
-        Array.put(Imbalance.SEEKING, 5);
+        Array.put(Imbalance.SEEKING, 3);
     });
 
     public PolarAntenna(Properties properties) {
@@ -49,13 +49,13 @@ public class PolarAntenna extends Block {
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         if (!pLevel.isClientSide) {
             if ((pState.getValue(IMBALANCE) == Imbalance.NONE) && (pState.getValue(COOLDOWN) == false)) {
-                this.setTiltAndScheduleTick(pState, pLevel, pPos, Imbalance.LOW, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+                this.setImbalanceAndScheduleTick(pState, pLevel, pPos, Imbalance.LOW, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
             } else if ((pState.getValue(IMBALANCE) == Imbalance.LOW) && (pState.getValue(COOLDOWN) == false)) {
-                this.setTiltAndScheduleTick(pState, pLevel, pPos, Imbalance.MEDIUM, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+                this.setImbalanceAndScheduleTick(pState, pLevel, pPos, Imbalance.MEDIUM, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
             } else if ((pState.getValue(IMBALANCE) == Imbalance.MEDIUM) && (pState.getValue(COOLDOWN) == false)) {
-                this.setTiltAndScheduleTick(pState, pLevel, pPos, Imbalance.HIGH, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+                this.setImbalanceAndScheduleTick(pState, pLevel, pPos, Imbalance.HIGH, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
             } else if ((pState.getValue(IMBALANCE) == Imbalance.HIGH) && (pState.getValue(COOLDOWN) == false)) {
-                this.setTiltAndScheduleTick(pState, pLevel, pPos, Imbalance.SEEKING, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+                this.setImbalanceAndScheduleTick(pState, pLevel, pPos, Imbalance.SEEKING, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
             }
         }
     }
@@ -71,16 +71,16 @@ public class PolarAntenna extends Block {
         }
     }
 
-    private void setTiltAndScheduleTick(BlockState pState, Level pLevel, BlockPos pPos, Imbalance pTilt, @Nullable SoundEvent pSound) {
+    private void setImbalanceAndScheduleTick(BlockState pState, Level pLevel, BlockPos pPos, Imbalance pImbalance, @Nullable SoundEvent pSound) {
         if (pSound != null) {
             playImbalanceSound(pLevel, pPos, pSound);
         }
 
-        int i = DELAY_UNTIL_NEXT_IMBALANCE_STATE.getInt(pTilt);
+        int i = DELAY_UNTIL_NEXT_IMBALANCE_STATE.getInt(pImbalance);
         if (i != -1) {
             pLevel.scheduleTick(pPos, this, i);
         }
-        setTilt(pState, pLevel, pPos, pTilt);
+        setImbalance(pState, pLevel, pPos, pImbalance);
     }
 
     private static void playImbalanceSound(Level pLevel, BlockPos pPos, SoundEvent pSound) {
@@ -88,15 +88,15 @@ public class PolarAntenna extends Block {
         pLevel.playSound((Player)null, pPos, pSound, SoundSource.BLOCKS, 1.0F, f);
     }
 
-    private static void setTilt(BlockState pState, Level pLevel, BlockPos pPos, Imbalance pTilt) {
-        pLevel.setBlockAndUpdate(pPos, pState.setValue(COOLDOWN, true).setValue(IMBALANCE, pTilt));
+    private static void setImbalance(BlockState pState, Level pLevel, BlockPos pPos, Imbalance pImbalance) {
+        pLevel.setBlockAndUpdate(pPos, pState.setValue(COOLDOWN, true).setValue(IMBALANCE, pImbalance));
     }
 
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
         this.tick(pState, pLevel, pPos, pRandom);
     }
 
-    private static void startSeeking(BlockState pState, Level pLevel, BlockPos pPos) {
+    private void startSeeking(BlockState pState, Level pLevel, BlockPos pPos) {
 
         if (pState.getValue(IMBALANCE) == Imbalance.SEEKING){
             if (pState.getValue(IMBALANCE) != Imbalance.NONE) {
@@ -112,7 +112,7 @@ public class PolarAntenna extends Block {
             BlockState neighborState = cachedChunk.getBlockState(neighborPos);
 
             if ((neighborState.getBlock() instanceof PolarAntenna) && !(neighborState.getValue(IMBALANCE) == Imbalance.SEEKING)) {
-                pLevel.setBlockAndUpdate(neighborPos, pState.setValue(IMBALANCE, Imbalance.SEEKING));
+                this.setImbalanceAndScheduleTick(pState, pLevel, neighborPos, Imbalance.SEEKING, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
             }
 
 //            for (x = -1; x < 2; x++) {
