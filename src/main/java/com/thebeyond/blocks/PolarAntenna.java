@@ -1,26 +1,40 @@
 package com.thebeyond.blocks;
 
 import com.thebeyond.blocks.TBBlockstates.Imbalance;
-import net.minecraft.client.multiplayer.ClientLevel;
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.chunk.ChunkAccess;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class PolarAntenna extends Block {
     public static final EnumProperty IMBALANCE = EnumProperty.create("imbalance", Imbalance.class);
     public static final BooleanProperty CARRIER = BlockStateProperties.ENABLED;
     public static final BooleanProperty COOLDOWN = BlockStateProperties.DISARMED;
+    private static final Object2IntMap<Imbalance> DELAY_UNTIL_NEXT_IMBALANCE_STATE = Util.make(new Object2IntArrayMap<>(), (Array) -> {
+        Array.defaultReturnValue(-1);
+        Array.put(Imbalance.LOW, 20);
+        Array.put(Imbalance.MEDIUM, 20);
+        Array.put(Imbalance.HIGH, 20);
+        Array.put(Imbalance.SEEKING, 5);
+    });
 
     public PolarAntenna(Properties properties) {
         super(properties);
@@ -32,43 +46,82 @@ public class PolarAntenna extends Block {
         builder.add(IMBALANCE, CARRIER, COOLDOWN);
     }
 
-    public void entityInside(BlockState thisState, Level level, BlockPos ThisPos, Entity entity) {
-        super.entityInside(thisState, level, ThisPos, entity);
-        if(!level.isClientSide && canEntityTrigger(ThisPos, entity)){
-            if (!(entity instanceof EnderMan)) {
-                level.setBlockAndUpdate(ThisPos, setNewBlockstate(thisState, level, ThisPos));
+    public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
+        if (!pLevel.isClientSide) {
+            if ((pState.getValue(IMBALANCE) == Imbalance.NONE) && (pState.getValue(COOLDOWN) == false)) {
+                this.setTiltAndScheduleTick(pState, pLevel, pPos, Imbalance.LOW, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+            } else if ((pState.getValue(IMBALANCE) == Imbalance.LOW) && (pState.getValue(COOLDOWN) == false)) {
+                this.setTiltAndScheduleTick(pState, pLevel, pPos, Imbalance.MEDIUM, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+            } else if ((pState.getValue(IMBALANCE) == Imbalance.MEDIUM) && (pState.getValue(COOLDOWN) == false)) {
+                this.setTiltAndScheduleTick(pState, pLevel, pPos, Imbalance.HIGH, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+            } else if ((pState.getValue(IMBALANCE) == Imbalance.HIGH) && (pState.getValue(COOLDOWN) == false)) {
+                this.setTiltAndScheduleTick(pState, pLevel, pPos, Imbalance.SEEKING, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
             }
         }
     }
 
-    public BlockState setNewBlockstate(BlockState thisState, Level level, BlockPos ThisPos){
-
-        if(thisState.getValue(IMBALANCE) == Imbalance.NONE){
-            return thisState.setValue(IMBALANCE, Imbalance.LOW);
-        }
-
-        else if(thisState.getValue(IMBALANCE) == Imbalance.LOW){
-            return thisState.setValue(IMBALANCE, Imbalance.MEDIUM);
-        }
-
-        else if(thisState.getValue(IMBALANCE) == Imbalance.MEDIUM){
-            return thisState.setValue(IMBALANCE, Imbalance.HIGH);
-        }
-        return thisState.setValue(IMBALANCE, Imbalance.HIGH);
+    public void resetCoolDown(BlockState pState, ServerLevel pLevel, BlockPos pPos){
+        pLevel.setBlockAndUpdate(pPos, pState.setValue(COOLDOWN, false));
     }
 
-    //public boolean CoolDownTime(BlockState thisState, Level level, BlockPos ThisPos){
-    //        level.scheduleTick(ThisPos,this, 20);
-    //    return false;
-    //}
-
-    //public int UpdateNeighbour(BlockState ThisState, BlockState neighborState, BlockPos ThisPos, BlockPos neighborPos){
-    //    return 0;
-    //}
-
-    private static boolean canEntityTrigger(BlockPos ThisPos, Entity entity) {
-
-        return !(entity.position().x == ThisPos.getX());
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
+        this.resetCoolDown(pState,pLevel,pPos);
+        if (pState.getValue(IMBALANCE) == Imbalance.SEEKING){
+            startSeeking(pState, pLevel, pPos);
+        }
     }
 
+    private void setTiltAndScheduleTick(BlockState pState, Level pLevel, BlockPos pPos, Imbalance pTilt, @Nullable SoundEvent pSound) {
+        if (pSound != null) {
+            playImbalanceSound(pLevel, pPos, pSound);
+        }
+
+        int i = DELAY_UNTIL_NEXT_IMBALANCE_STATE.getInt(pTilt);
+        if (i != -1) {
+            pLevel.scheduleTick(pPos, this, i);
+        }
+        setTilt(pState, pLevel, pPos, pTilt);
+    }
+
+    private static void playImbalanceSound(Level pLevel, BlockPos pPos, SoundEvent pSound) {
+        float f = Mth.randomBetween(pLevel.random, 0.8F, 1.2F);
+        pLevel.playSound((Player)null, pPos, pSound, SoundSource.BLOCKS, 1.0F, f);
+    }
+
+    private static void setTilt(BlockState pState, Level pLevel, BlockPos pPos, Imbalance pTilt) {
+        pLevel.setBlockAndUpdate(pPos, pState.setValue(COOLDOWN, true).setValue(IMBALANCE, pTilt));
+    }
+
+    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
+        this.tick(pState, pLevel, pPos, pRandom);
+    }
+
+    private static void startSeeking(BlockState pState, Level pLevel, BlockPos pPos) {
+
+        if (pState.getValue(IMBALANCE) == Imbalance.SEEKING){
+            if (pState.getValue(IMBALANCE) != Imbalance.NONE) {
+                playImbalanceSound(pLevel, pPos, SoundEvents.BIG_DRIPLEAF_TILT_UP);
+            }
+            int x;
+            int y;
+            int z;
+
+            ChunkAccess cachedChunk = pLevel.getChunk(pPos);
+
+            BlockPos neighborPos = pPos.relative(Direction.Axis.X, 1);
+            BlockState neighborState = cachedChunk.getBlockState(neighborPos);
+
+            if ((neighborState.getBlock() instanceof PolarAntenna) && !(neighborState.getValue(IMBALANCE) == Imbalance.SEEKING)) {
+                pLevel.setBlockAndUpdate(neighborPos, pState.setValue(IMBALANCE, Imbalance.SEEKING));
+            }
+
+//            for (x = -1; x < 2; x++) {
+//                for (y = -1; y < 2; y++) {
+//                    for (z = -1; z < 2; z++) {
+//
+//                    }
+//                }
+//            }
+        }
+    }
 }

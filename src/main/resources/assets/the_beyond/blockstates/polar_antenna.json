@@ -11,6 +11,9 @@
         },
         "imbalance=high": {
             "model": "minecraft:block/sweet_berry_bush_stage3"
+        },
+        "imbalance=seeking": {
+            "model": "minecraft:block/cyan_stained_glass"
         }
     }
 }
