@@ -2,7 +2,7 @@
   "temperature": 2,
   "downfall": 0,
   "precipitation": "none",
-  "category": "nether",
+  "category": "the_end",
   "effects": {
     "sky_color": 7254527,
     "fog_color": 6840176,
@@ -27,9 +27,9 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:white_ash"
+        "type": "minecraft:warped_spore"
       },
-      "probability": 0.118093334
+      "probability": 0.01428
     }
   },
   "spawners": {
@@ -69,23 +69,13 @@
     ]
   },
   "features": [
-    [   "the_beyond:void_puddle"
-    ],
-    [],
-    [],
-    [
-	"the_beyond:magnetic_pillar"
-    ],
     [],
     [],
     [],
-    [
-      "minecraft:glowstone_extra",
-      "minecraft:glowstone",
-      "minecraft:brown_mushroom_nether",
-      "minecraft:red_mushroom_nether",
-      "the_beyond:magnolilly",
-      "minecraft:ore_debris_small"
-    ]
+    ["the_beyond:void_puddle"],
+    ["the_beyond:magnetic_pillar"],
+    ["the_beyond:magnolilly"],
+    ["the_beyond:polar_antenna"],
+    ["the_beyond:more_polar_antenna"]
   ]
 }

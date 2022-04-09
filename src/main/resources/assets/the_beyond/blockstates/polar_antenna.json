@@ -1,19 +1,19 @@
 {
     "variants": {
         "imbalance=none": {
-            "model": "minecraft:block/sweet_berry_bush_stage0"
+            "model": "the_beyond:block/polar_antenna_none"
         },
         "imbalance=low": {
-            "model": "minecraft:block/sweet_berry_bush_stage1"
+            "model": "the_beyond:block/polar_antenna_low"
         },
         "imbalance=medium": {
-            "model": "minecraft:block/sweet_berry_bush_stage2"
+            "model": "the_beyond:block/polar_antenna_medium"
         },
         "imbalance=high": {
-            "model": "minecraft:block/sweet_berry_bush_stage3"
+            "model": "the_beyond:block/polar_antenna_high"
         },
         "imbalance=seeking": {
-            "model": "minecraft:block/cyan_stained_glass"
+            "model": "the_beyond:block/polar_antenna_seeking"
         }
     }
 }

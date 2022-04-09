@@ -5,8 +5,6 @@ import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -16,10 +14,11 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
-import net.minecraft.world.level.chunk.ChunkAccess;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -69,7 +68,7 @@ public class PolarAntenna extends Block {
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
         this.resetCoolDown(pState,pLevel,pPos);
         if (pState.getValue(IMBALANCE) == Imbalance.SEEKING){
-            startSeeking(pState, pLevel, pPos);
+            startSeeking(pState, pLevel, pPos, pRandom);
         }
     }
 
@@ -96,38 +95,64 @@ public class PolarAntenna extends Block {
     private static void setImbalance(BlockState pState, Level pLevel, BlockPos pPos, Imbalance pImbalance) {
         pLevel.setBlockAndUpdate(pPos, pState.setValue(COOLDOWN, true).setValue(IMBALANCE, pImbalance));
     }
+
+    public boolean isRandomlyTicking(BlockState pState) {
+        return true;
+    }
+
     //not done yet, supposed to reset the states after a while
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
-        this.tick(pState, pLevel, pPos, pRandom);
+
+        if (!pLevel.isAreaLoaded(pPos, 1)) return;
+        if (!pLevel.isClientSide) {
+            if ((pState.getValue(IMBALANCE) == Imbalance.LOW) && (pState.getValue(COOLDOWN) == false)) {
+                this.setImbalanceAndScheduleTick(pState, pLevel, pPos, Imbalance.NONE, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+            } else if ((pState.getValue(IMBALANCE) == Imbalance.MEDIUM) && (pState.getValue(COOLDOWN) == false)) {
+                this.setImbalanceAndScheduleTick(pState, pLevel, pPos, Imbalance.LOW, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+            } else if ((pState.getValue(IMBALANCE) == Imbalance.HIGH) && (pState.getValue(COOLDOWN) == false)) {
+                this.setImbalanceAndScheduleTick(pState, pLevel, pPos, Imbalance.MEDIUM, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+            } else if ((pState.getValue(IMBALANCE) == Imbalance.SEEKING) && (pState.getValue(COOLDOWN) == false)) {
+                this.setImbalanceAndScheduleTick(pState, pLevel, pPos, Imbalance.HIGH, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+            }
+        }
+    }
+
+    public BlockBehaviour.OffsetType getOffsetType() {
+        return OffsetType.XZ;
     }
 
     //sets a random nearby antenna to seeking; not done
-    private void startSeeking(BlockState pState, Level pLevel, BlockPos pPos) {
+    private void startSeeking(BlockState pState, Level pLevel, BlockPos pPos, Random pRandom) {
 
         if (pState.getValue(IMBALANCE) == Imbalance.SEEKING){
             if (pState.getValue(IMBALANCE) != Imbalance.NONE) {
                 playImbalanceSound(pLevel, pPos, SoundEvents.BIG_DRIPLEAF_TILT_UP);
             }
-            int x;
-            int y;
-            int z;
+            //int x;
+            //int y;
+            //int z;
 
-            ChunkAccess cachedChunk = pLevel.getChunk(pPos);
+            //ChunkAccess cachedChunk = pLevel.getChunk(pPos);
 
-            BlockPos neighborPos = pPos.relative(Direction.Axis.X, 1);
-            BlockState neighborState = cachedChunk.getBlockState(neighborPos);
+            //BlockPos neighborPos = pPos.relative(Direction.Axis.X, 1);
+            //BlockState neighborState = cachedChunk.getBlockState(neighborPos);
 
-            if ((neighborState.getBlock() instanceof PolarAntenna) && !(neighborState.getValue(IMBALANCE) == Imbalance.SEEKING)) {
-                this.setImbalanceAndScheduleTick(pState, pLevel, neighborPos, Imbalance.SEEKING, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
-            }
+            //if ((neighborState.getBlock() instanceof PolarAntenna) && !(neighborState.getValue(IMBALANCE) == Imbalance.SEEKING)) {
+            //     this.setImbalanceAndScheduleTick(pState, pLevel, neighborPos, Imbalance.SEEKING, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+            // }
 
-//            for (x = -1; x < 2; x++) {
-//                for (y = -1; y < 2; y++) {
-//                    for (z = -1; z < 2; z++) {
-//
-//                    }
-//                }
-//            }
+            if (!pLevel.isAreaLoaded(pPos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
+
+                BlockState blockstate = this.defaultBlockState();
+
+                for(int i = 0; i < 20; ++i) {
+                    BlockPos blockpos = pPos.offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);
+
+                    if (pLevel.getBlockState(blockpos).getBlock() instanceof PolarAntenna && !(pLevel.getBlockState(blockpos).getValue(IMBALANCE) == Imbalance.SEEKING)) {
+                        this.setImbalanceAndScheduleTick(pState, pLevel, blockpos, Imbalance.SEEKING, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+                    }
+                }
+
         }
     }
 }

@@ -22,6 +22,10 @@ public class TBBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, TheBeyond.MOD_ID);
 
     public static final RegistryObject<Block> PEARL_BLOCK = registerBlock("pearl_block", () -> new Block(BlockBehaviour.Properties.of(Material.AMETHYST).sound(SoundType.AMETHYST).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> COMPRESSED_SAND = registerBlock("compressed_sand", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHERRACK).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> BIOLUMINESCENT_SAND = registerBlock("bioluminescent_sand", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHERRACK).strength(1f).lightLevel(state -> 13).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+
+
     public static final RegistryObject<Block> FERROUS_CATALYST = registerBlock("ferrous_catalyst", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(1.5f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
     public static final RegistryObject<Block> FERROPILLAR = registerBlock("ferropillar", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.BONE_BLOCK).strength(2f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
     public static final RegistryObject<Block> PLATE_BLOCK = registerBlock("plate_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.LANTERN).strength(2f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);

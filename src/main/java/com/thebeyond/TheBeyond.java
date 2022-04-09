@@ -4,6 +4,8 @@ import com.thebeyond.init.TBBiomes;
 import com.thebeyond.init.TBBlocks;
 import com.thebeyond.init.TBEntities;
 import com.thebeyond.init.TBItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -46,16 +48,7 @@ public class TheBeyond {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-//
-//        creativeTab = new CreativeModeTab(-1, MOD_ID) {
-//
-//            @Override
-//            @OnlyIn(Dist.CLIENT)
-//            public ItemStack makeIcon() {
-//
-//                return new ItemStack(BLOCKS.getValue(new ResourceLocation(MOD_ID,"pearl_block")));
-//            }
-//        };
+        ItemBlockRenderTypes.setRenderLayer(TBBlocks.POLAR_ANTENNA.get(), RenderType.cutout());
     }
 
     ////TODO

@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cross",
+    "textures": {
+        "cross": "the_beyond:block/polar_antenna_seeking"
+    }
+}

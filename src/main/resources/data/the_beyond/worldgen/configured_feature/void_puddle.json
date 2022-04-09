@@ -10,7 +10,7 @@
         "barrier": {
             "type": "minecraft:simple_state_provider",
             "state": {
-                "Name": "the_beyond:plate_block"
+                "Name": "the_beyond:plated_end_stone"
             }
         }
     }
