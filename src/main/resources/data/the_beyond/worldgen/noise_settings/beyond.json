@@ -217,6 +217,126 @@
                         }
                     }
                 ]
+            },
+            {
+                "type": "minecraft:sequence",
+                "sequence": [
+                    {
+                        "type": "minecraft:condition",
+                        "if_true": {
+                            "type": "minecraft:biome",
+                            "biome_is": [
+                                "the_beyond:orchestral_valley"
+                            ]
+                        },
+                        "then_run": {
+                            "type": "minecraft:condition",
+                            "if_true": {
+                                "type": "minecraft:stone_depth",
+                                "offset": 0,
+                                "surface_type": "floor",
+                                "add_surface_depth": false,
+                                "add_surface_secondary_depth": false
+                            },
+                            "then_run": {
+                                "type": "minecraft:condition",
+                                "if_true": {
+                                    "type": "minecraft:noise_threshold",
+                                    "noise": "minecraft:powder_snow",
+                                    "min_threshold": -0.2,
+                                    "max_threshold": 0.2
+                                },
+                                "then_run": {
+                                    "type": "minecraft:block",
+                                    "result_state": {
+                                        "Name": "the_beyond:violet_rot"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "minecraft:sequence",
+                "sequence": [
+                    {
+                        "type": "minecraft:condition",
+                        "if_true": {
+                            "type": "minecraft:biome",
+                            "biome_is": [
+                                "the_beyond:disfigured_forest"
+                            ]
+                        },
+                        "then_run": {
+                            "type": "minecraft:sequence",
+                            "sequence": [
+                                {
+                                    "type": "minecraft:condition",
+                                    "if_true": {
+                                        "type": "minecraft:stone_depth",
+                                        "offset": 0,
+                                        "surface_type": "floor",
+                                        "add_surface_depth": false,
+                                        "add_surface_secondary_depth": false
+                                    },
+                                    "then_run": {
+                                        "type": "minecraft:block",
+                                        "result_state": {
+                                            "Name": "the_beyond:disfigured_grass"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "minecraft:condition",
+                                    "if_true": {
+                                        "type": "minecraft:stone_depth",
+                                        "offset": 0,
+                                        "surface_type": "floor",
+                                        "add_surface_depth": true,
+                                        "add_surface_secondary_depth": true
+                                    },
+                                    "then_run": {
+                                        "type": "minecraft:block",
+                                        "result_state": {
+                                            "Name": "the_beyond:disfigured_earth"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "minecraft:sequence",
+                "sequence": [
+                    {
+                        "type": "minecraft:condition",
+                        "if_true": {
+                            "type": "minecraft:biome",
+                            "biome_is": [
+                                "the_beyond:great_graveyard"
+                            ]
+                        },
+                        "then_run": {
+                            "type": "minecraft:condition",
+                            "if_true": {
+                                "type": "minecraft:stone_depth",
+                                "offset": 0,
+                                "surface_type": "floor",
+                                "add_surface_depth": true,
+                                "add_surface_secondary_depth": true
+                            },
+                            "then_run": {
+                                "type": "minecraft:block",
+                                "result_state": {
+                                    "Name": "the_beyond:glass_obsidian"
+                                }
+                            }
+                        }
+                    }
+                ]
             }
         ]
     },

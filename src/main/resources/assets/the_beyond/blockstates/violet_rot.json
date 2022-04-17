@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "the_beyond:block/violet_rot",
+        "y": 90
+      },
+      {
+        "model": "the_beyond:block/violet_rot"
+      }
+    ]
+  }
+}
+
+

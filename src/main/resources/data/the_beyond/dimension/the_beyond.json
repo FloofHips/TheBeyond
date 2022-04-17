@@ -1,73 +1,73 @@
 {
-  "type": "minecraft:the_end",
-  "generator": {
-    "biome_source": {
-      "biomes": [
-        {
-          "parameters": {
-            "erosion": 0.0,
-            "depth": 0.0,
-            "weirdness": 0.0,
-            "offset": 0.0,
-            "temperature": 0.0,
-            "humidity": 0.0,
-            "continentalness": 0.0
-          },
-          "biome": "the_beyond:pearlescent_planes"
-        },
-        {
-          "parameters": {
-            "erosion": 0.0,
-            "depth": 0.0,
-            "weirdness": 0.0,
-            "offset": 0.0,
-            "temperature": 0.0,
-            "humidity": -0.5,
-            "continentalness": 0.0
-          },
-          "biome": "the_beyond:magnetic_field"
-        },
-        {
-          "parameters": {
-            "erosion": 0.0,
-            "depth": 0.0,
-            "weirdness": 0.0,
-            "offset": 0.0,
-            "temperature": 0.4,
-            "humidity": 0.0,
-            "continentalness": 0.0
-          },
-          "biome": "minecraft:crimson_forest"
-        },
-        {
-          "parameters": {
-            "erosion": 0.0,
-            "depth": 0.0,
-            "weirdness": 0.0,
-            "offset": 0.375,
-            "temperature": 0.0,
-            "humidity": 0.5,
-            "continentalness": 0.0
-          },
-          "biome": "minecraft:dripstone_caves"
-        },
-        {
-          "parameters": {
-            "erosion": 0.0,
-            "depth": 0.0,
-            "weirdness": 0.0,
-            "offset": 0.175,
-            "temperature": -0.5,
-            "humidity": 0.0,
-            "continentalness": 0.0
-          },
-          "biome": "minecraft:warped_forest"
+    "type": "minecraft:the_end",
+    "generator": {
+        "type": "minecraft:noise",
+        "seed": 0,
+        "settings": "the_beyond:beyond",
+        "biome_source": {
+            "type": "minecraft:multi_noise",
+            "biomes": [
+                {
+                    "biome": "the_beyond:pearlescent_planes",
+                    "parameters": {
+                        "temperature": 0,
+                        "humidity": 0,
+                        "continentalness": 0,
+                        "erosion": 0,
+                        "weirdness": 0,
+                        "depth": 0,
+                        "offset": 0
+                    }
+                },
+                {
+                    "biome": "the_beyond:magnetic_field",
+                    "parameters": {
+                        "temperature": 0,
+                        "humidity": -0.5,
+                        "continentalness": 0,
+                        "erosion": 0,
+                        "weirdness": 0,
+                        "depth": 0,
+                        "offset": 0
+                    }
+                },
+                {
+                    "biome": "the_beyond:orchestral_valley",
+                    "parameters": {
+                        "temperature": 0.4,
+                        "humidity": 0,
+                        "continentalness": 0,
+                        "erosion": 0,
+                        "weirdness": 0,
+                        "depth": 0,
+                        "offset": 0
+                    }
+                },
+                {
+                    "biome": "the_beyond:great_graveyard",
+                    "parameters": {
+                        "temperature": 0,
+                        "humidity": 0.5,
+                        "continentalness": 0,
+                        "erosion": 0,
+                        "weirdness": 0,
+                        "depth": 0,
+                        "offset": 0.375
+                    }
+                },
+                {
+                    "biome": "the_beyond:disfigured_forest",
+                    "parameters": {
+                        "temperature": -0.5,
+                        "humidity": 0,
+                        "continentalness": 0,
+                        "erosion": 0,
+                        "weirdness": 0,
+                        "depth": 0,
+                        "offset": 0.175
+                    }
+                }
+            ]
         }
-      ],
-      "type": "minecraft:multi_noise"
-    },
-    "seed": 0,
-    "settings": "the_beyond:beyond",
-    "type": "minecraft:noise"
-  }
+    }
 }

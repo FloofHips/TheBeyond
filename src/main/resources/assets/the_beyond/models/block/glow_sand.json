@@ -2,6 +2,6 @@
     "parent": "minecraft:block/cube_column",
     "textures": {
         "end": "the_beyond:block/compressed_sand",
-        "side": "the_beyond:block/bioluminescent_sand"
+        "side": "the_beyond:block/glow_sand"
     }
 }

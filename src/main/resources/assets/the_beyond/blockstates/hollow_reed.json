@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "the_beyond:block/hollow_reed"
+      },
+      {
+        "model": "the_beyond:block/hollow_reed_alt"
+      }
+    ]
+  }
+}
+
+

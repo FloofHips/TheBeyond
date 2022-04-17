@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "the_beyond:block/polar_antenna_none"
+        "layer0": "the_beyond:block/cotting"
     }
 }

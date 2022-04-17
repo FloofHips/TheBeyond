@@ -49,6 +49,12 @@ public class TheBeyond {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(TBBlocks.POLAR_ANTENNA.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(TBBlocks.POROUS_REED.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(TBBlocks.HOLLOW_REED.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(TBBlocks.VILE_GROWTH.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(TBBlocks.COTTING.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(TBBlocks.SHRYBULB.get(), RenderType.cutout());
+
     }
 
     ////TODO

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "the_beyond:block/goliath_stone",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "the_beyond:block/goliath_stone_mirrored",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "the_beyond:block/goliath_stone",
+        "y": 90,
+        "x": 90
+      },
+      {
+        "model": "the_beyond:block/goliath_stone_mirrored",
+        "y": 90,
+        "x": 90
+      }
+    ]
+  }
+}
+
+
