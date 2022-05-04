@@ -3,7 +3,7 @@
     "placement": [
         {
             "type": "minecraft:count_on_every_layer",
-            "count": 100
+            "count": 256
         },
         {
             "type": "minecraft:biome"
@@ -20,7 +20,7 @@
                     0
                 ],
                 "blocks": [
-                    "minecraft:end_stone"
+                    "the_beyond:cotton_rot"
                 ]
             }
         }

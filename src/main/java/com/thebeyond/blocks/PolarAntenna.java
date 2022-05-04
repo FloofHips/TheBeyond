@@ -1,6 +1,7 @@
 package com.thebeyond.blocks;
 
 import com.thebeyond.blocks.TBBlockstates.Imbalance;
+import com.thebeyond.init.TBBlocks;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.Util;
@@ -18,7 +19,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -29,7 +29,6 @@ import java.util.Random;
 
 public class PolarAntenna extends Block {
     public static final EnumProperty IMBALANCE = EnumProperty.create("imbalance", Imbalance.class);
-    public static final BooleanProperty CARRIER = BlockStateProperties.ENABLED;
     public static final BooleanProperty COOLDOWN = BlockStateProperties.DISARMED;
     private static final Object2IntMap<Imbalance> DELAY_UNTIL_NEXT_IMBALANCE_STATE = Util.make(new Object2IntArrayMap<>(), (Array) -> {
         Array.defaultReturnValue(-1);
@@ -41,12 +40,12 @@ public class PolarAntenna extends Block {
 
     public PolarAntenna(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(IMBALANCE, Imbalance.NONE).setValue(CARRIER, true).setValue(COOLDOWN, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(IMBALANCE, Imbalance.NONE).setValue(COOLDOWN, false));
 
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(IMBALANCE, CARRIER, COOLDOWN);
+        builder.add(IMBALANCE, COOLDOWN);
     }
 
     //updates state if entity inside
@@ -112,7 +111,7 @@ public class PolarAntenna extends Block {
         return true;
     }
 
-    //not done yet, supposed to reset the states after a while
+    //resets the states after a while
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
 
         if (!pLevel.isAreaLoaded(pPos, 1)) return;
@@ -140,18 +139,6 @@ public class PolarAntenna extends Block {
             if (pState.getValue(IMBALANCE) != Imbalance.NONE) {
                 playImbalanceSound(pLevel, pPos, SoundEvents.BIG_DRIPLEAF_TILT_UP);
             }
-            //int x;
-            //int y;
-            //int z;
-
-            //ChunkAccess cachedChunk = pLevel.getChunk(pPos);
-
-            //BlockPos neighborPos = pPos.relative(Direction.Axis.X, 1);
-            //BlockState neighborState = cachedChunk.getBlockState(neighborPos);
-
-            //if ((neighborState.getBlock() instanceof PolarAntenna) && !(neighborState.getValue(IMBALANCE) == Imbalance.SEEKING)) {
-            //     this.setImbalanceAndScheduleTick(pState, pLevel, neighborPos, Imbalance.SEEKING, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
-            // }
 
             if (!pLevel.isAreaLoaded(pPos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
 
@@ -162,6 +149,10 @@ public class PolarAntenna extends Block {
 
                     if (pLevel.getBlockState(blockpos).getBlock() instanceof PolarAntenna && !(pLevel.getBlockState(blockpos).getValue(IMBALANCE) == Imbalance.SEEKING)) {
                         this.setImbalanceAndScheduleTick(pState, pLevel, blockpos, Imbalance.SEEKING, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
+                    }
+
+                    if (pLevel.getBlockState(blockpos).getBlock() instanceof Ferropillar && !(pLevel.getBlockState(blockpos).getValue(Ferropillar.ENERGIZED))) {
+                        pLevel.setBlock(blockpos, TBBlocks.FERROPILLAR.get().defaultBlockState(), 3);
                     }
                 }
 
