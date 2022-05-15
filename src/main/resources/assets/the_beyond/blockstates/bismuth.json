@@ -1,7 +1,14 @@
 {
   "variants": {
-    "": {
-      "model": "the_beyond:block/bismuth"
-    }
+    "": [
+      {
+        "model": "the_beyond:block/bismuth"
+      },
+      {
+        "model": "the_beyond:block/bismuth_alt"
+      }
+    ]
   }
 }
+
+

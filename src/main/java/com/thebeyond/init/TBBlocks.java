@@ -62,7 +62,7 @@ public class TBBlocks {
     public static final RegistryObject<Block> DISPLACED_EYE = registerBlock("displaced_eye", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GLASS).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
 
     //Bismuthian Palace
-    public static final RegistryObject<Block> BISMUTH = registerBlock("bismuth", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.MEDIUM_AMETHYST_BUD).strength(3f).noOcclusion().requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> BISMUTH = registerBlock("bismuth", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.BONE_BLOCK).strength(3f).noOcclusion().requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {

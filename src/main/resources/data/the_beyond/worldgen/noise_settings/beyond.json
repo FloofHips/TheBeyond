@@ -283,7 +283,7 @@
                                     "then_run": {
                                         "type": "minecraft:block",
                                         "result_state": {
-                                            "Name": "the_beyond:disfigured_grass"
+                                            "Name": "minecraft:end_stone"
                                         }
                                     }
                                 },
