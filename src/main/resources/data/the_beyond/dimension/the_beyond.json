@@ -11,7 +11,7 @@
                     "biome": "the_beyond:magnetic_field",
                     "parameters": {
                         "temperature": 0,
-                        "humidity": 0,
+                        "humidity": 0.7,
                         "continentalness": 0,
                         "erosion": 0,
                         "weirdness": 0,
@@ -23,7 +23,7 @@
                     "biome": "the_beyond:bismuthian_palace",
                     "parameters": {
                         "temperature": 0,
-                        "humidity": -0.5,
+                        "humidity": -0.7,
                         "continentalness": 0,
                         "erosion": 0,
                         "weirdness": 0,
@@ -34,7 +34,7 @@
                 {
                     "biome": "the_beyond:great_graveyard",
                     "parameters": {
-                        "temperature": 0.4,
+                        "temperature": 0.9,
                         "humidity": 0,
                         "continentalness": 0,
                         "erosion": 0,
@@ -47,7 +47,7 @@
                     "biome": "the_beyond:disfigured_forest",
                     "parameters": {
                         "temperature": 0,
-                        "humidity": 0.5,
+                        "humidity": 0.4,
                         "continentalness": 0,
                         "erosion": 0,
                         "weirdness": 0,
@@ -63,6 +63,18 @@
                         "continentalness": 0,
                         "erosion": 0,
                         "weirdness": 0,
+                        "depth": 0,
+                        "offset": 0.175
+                    }
+                },
+                {
+                    "biome": "the_beyond:pearlescent_planes",
+                    "parameters": {
+                        "temperature": 0,
+                        "humidity": 0,
+                        "continentalness": 0,
+                        "erosion": 0,
+                        "weirdness": 1,
                         "depth": 0,
                         "offset": 0.175
                     }

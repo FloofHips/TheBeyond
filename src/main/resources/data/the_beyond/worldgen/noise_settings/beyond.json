@@ -18,7 +18,7 @@
         "sampling": {
             "xz_scale": 2,
             "y_scale": 50,
-            "xz_factor": 360,
+            "xz_factor": 1,
             "y_factor": 50
         },
         "bottom_slide": {
