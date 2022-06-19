@@ -26,7 +26,7 @@ public class EndBushBlock extends Block {
     }
 
     public BlockBehaviour.OffsetType getOffsetType() {
-        return BlockBehaviour.OffsetType.XYZ;
+        return BlockBehaviour.OffsetType.XZ;
     }
 
     public EndBushBlock(Properties p_49795_) {

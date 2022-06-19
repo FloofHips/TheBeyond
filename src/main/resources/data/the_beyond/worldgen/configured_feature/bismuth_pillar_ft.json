@@ -14,7 +14,7 @@
                 "max_inclusive": 4
             }
         },
-        "replaceable": "minecraft:dragon_immune",
+        "replaceable": "#the_beyond:bismuth_spawnable",
         "ground_state": {
             "type": "minecraft:simple_state_provider",
             "state": {

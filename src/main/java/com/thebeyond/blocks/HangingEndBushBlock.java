@@ -29,7 +29,7 @@ public class HangingEndBushBlock extends Block {
     }
 
     public BlockBehaviour.OffsetType getOffsetType() {
-        return BlockBehaviour.OffsetType.XYZ;
+        return BlockBehaviour.OffsetType.XZ;
     }
 
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {

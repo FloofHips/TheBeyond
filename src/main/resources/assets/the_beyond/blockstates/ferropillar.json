@@ -4,7 +4,7 @@
             "model": "the_beyond:block/ferropillar"
         },
         "powered=true": {
-            "model": "the_beyond:block/hollow_reed"
+            "model": "the_beyond:block/ferropillar_powered"
         }
     }
 }

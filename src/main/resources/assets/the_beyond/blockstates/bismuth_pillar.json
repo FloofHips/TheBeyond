@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "up=false": {
+            "model": "the_beyond:block/bismuth_pillar_mid"
+        },
+        "up=true": {
+            "model": "the_beyond:block/bismuth_pillar_tip"
+        }
+    }
+}

@@ -197,7 +197,7 @@ public class ClientEvents {
             return 0xFFFFFF;
 
 
-        }, TBBlocks.BISMUTH.get());
+        }, TBBlocks.BISMUTH.get(), TBBlocks.BISMUTH_PILLAR.get());
     }
 
     public static float tri(float f) {

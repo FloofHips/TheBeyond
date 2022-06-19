@@ -4,13 +4,13 @@
         "fluid": {
             "type": "minecraft:simple_state_provider",
             "state": {
-                "Name": "minecraft:powder_snow"
+                "Name": "the_beyond:brittle_metal"
             }
         },
         "barrier": {
             "type": "minecraft:simple_state_provider",
             "state": {
-                "Name": "minecraft:obsidian"
+                "Name": "minecraft:end_stone"
             }
         }
     }

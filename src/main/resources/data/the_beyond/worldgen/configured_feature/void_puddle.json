@@ -4,7 +4,7 @@
         "fluid": {
             "type": "minecraft:simple_state_provider",
             "state": {
-                "Name": "minecraft:redstone_block"
+                "Name": "the_beyond:gellid_void"
             }
         },
         "barrier": {

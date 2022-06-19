@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "up=false": {
+            "model": "the_beyond:block/molten_metal"
+        },
+        "up=true": {
+            "model": "the_beyond:block/molten_metal_surface"
+        }
+    }
+}

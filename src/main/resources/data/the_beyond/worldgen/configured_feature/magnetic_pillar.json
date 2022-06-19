@@ -18,7 +18,10 @@
                 "provider": {
                     "type": "minecraft:simple_state_provider",
                     "state": {
-                        "Name": "the_beyond:ferropillar"
+                        "Name": "the_beyond:ferropillar",
+                        "Properties": {
+                            "powered": "false"
+                        }
                     }
                 }
             },

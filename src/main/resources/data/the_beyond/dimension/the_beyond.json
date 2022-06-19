@@ -8,7 +8,7 @@
             "type": "minecraft:multi_noise",
             "biomes": [
                 {
-                    "biome": "the_beyond:pearlescent_planes",
+                    "biome": "the_beyond:magnetic_field",
                     "parameters": {
                         "temperature": 0,
                         "humidity": 0,
@@ -20,7 +20,7 @@
                     }
                 },
                 {
-                    "biome": "the_beyond:magnetic_field",
+                    "biome": "the_beyond:bismuthian_palace",
                     "parameters": {
                         "temperature": 0,
                         "humidity": -0.5,
@@ -32,7 +32,7 @@
                     }
                 },
                 {
-                    "biome": "the_beyond:orchestral_valley",
+                    "biome": "the_beyond:great_graveyard",
                     "parameters": {
                         "temperature": 0.4,
                         "humidity": 0,
@@ -44,7 +44,7 @@
                     }
                 },
                 {
-                    "biome": "the_beyond:great_graveyard",
+                    "biome": "the_beyond:disfigured_forest",
                     "parameters": {
                         "temperature": 0,
                         "humidity": 0.5,
@@ -56,7 +56,7 @@
                     }
                 },
                 {
-                    "biome": "the_beyond:disfigured_forest",
+                    "biome": "the_beyond:orchestral_valley",
                     "parameters": {
                         "temperature": -0.5,
                         "humidity": 0,

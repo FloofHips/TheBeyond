@@ -134,22 +134,19 @@
     ],
     [],
     [
-      	    "minecraft:glow_lichen",
-            "minecraft:patch_tall_grass_2",
-            "minecraft:lush_caves_ceiling_vegetation",
-            "minecraft:cave_vines",
-            "minecraft:lush_caves_vegetation",
-            "minecraft:spore_blossom",
-            "minecraft:classic_vines_cave_feature",
-	    "the_beyond:compressed_sand"
+      "minecraft:glow_lichen",
+      "minecraft:patch_tall_grass_2",
+      "minecraft:lush_caves_ceiling_vegetation",
+      "minecraft:cave_vines",
+      "minecraft:lush_caves_vegetation",
+      "minecraft:spore_blossom",
+      "minecraft:classic_vines_cave_feature",
+      "the_beyond:compressed_sand"
     ],
     [],
     [
-	    "the_beyond:brain_coral_small"
+      "the_beyond:brain_coral_small"
     ],
-    [
-            
-	    
-    ]
+    []
   ]
 }

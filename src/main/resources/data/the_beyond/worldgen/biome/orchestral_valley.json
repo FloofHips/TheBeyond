@@ -41,21 +41,20 @@
         [],
         [],
         [
-	    "the_beyond:cotton"
-	],
+            "the_beyond:cotton"
+        ],
         [
-	    "the_beyond:cotting"
-	],
+            "the_beyond:cotting"
+        ],
         [
-	    "the_beyond:choral_reed"
-	],	    
+            "the_beyond:choral_reed"
+        ],
         [
             "minecraft:chorus_plant"
         ],
-	[
+        [
             "the_beyond:vile_growth",
-	    
-	    "the_beyond:hyper_shrybulb"
+            "the_beyond:hyper_shrybulb"
         ]
     ]
 }
