@@ -36,6 +36,7 @@ public class TBBlocks {
     public static final RegistryObject<Block> PLATED_END_STONE   = registerBlock("plated_end_stone", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.ANCIENT_DEBRIS).strength(1.5f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
     public static final RegistryObject<Block> POLAR_ANTENNA      = registerBlock("polar_antenna", () -> new PolarAntenna(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.ANCIENT_DEBRIS).noCollission().strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
     public static final RegistryObject<Block> GELLID_VOID        = registerBlock("gellid_void", () -> new PseudoFluidBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.POWDER_SNOW).strength(3f).noOcclusion().requiresCorrectToolForDrops().lightLevel(state -> 10)), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> MAGNOLILLY         = registerBlock("magnolilly", () -> new MagnolillyBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.ANCIENT_DEBRIS).noCollission().strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
 
     //Orchestral Valley
     public static final RegistryObject<Block> COTTON_ROT         = registerBlock("cotton_rot", () -> new Block(BlockBehaviour.Properties.of(Material.WOOL).sound(SoundType.SNOW).strength(1f)), TBCreativeTab.THE_BEYOND);

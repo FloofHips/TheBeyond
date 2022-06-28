@@ -205,6 +205,8 @@ public class ClientEvents {
         return Math.abs(Mth.frac(f) - 0.5F) * 2.0F;
     }
 
+
+
 }
 
 //refactored code, a bit broken.. oops!
