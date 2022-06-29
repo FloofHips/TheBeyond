@@ -15,19 +15,20 @@ import net.minecraft.world.entity.Entity;
 
 public class PurpleSlimeModel<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation PURPLE_SLIME_MLL = new ModelLayerLocation(new ResourceLocation("the_beyond", "purple_slime"), "main");
-	private final ModelPart bb_main;
+
+	public static final ModelLayerLocation PURPLE_SLIME_MLL = new ModelLayerLocation(new ResourceLocation("the_beyond", "purple_slime"), "purple_slime");
+	private final ModelPart body;
 
 	public PurpleSlimeModel(ModelPart root) {
-		this.bb_main = root.getChild("bb_main");
+		this.body = root.getChild("body");
 	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition bb_main = partdefinition.addOrReplaceChild("bb_main", CubeListBuilder.create().texOffs(0, 0).addBox(-11.5F, -22.0F, -8.0F, 23.0F, 22.0F, 23.0F, new CubeDeformation(0.0F))
-		.texOffs(0, 45).addBox(-11.5F, -22.0F, -8.0F, 23.0F, 22.0F, 23.0F, new CubeDeformation(1.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 45).addBox(-11.5F, -22.0F, -8.0F, 23.0F, 22.0F, 23.0F, new CubeDeformation(1.0F))
+				.texOffs(0, 0).addBox(-11.5F, -22.0F, -8.0F, 23.0F, 22.0F, 23.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
@@ -39,6 +40,6 @@ public class PurpleSlimeModel<T extends Entity> extends EntityModel<T> {
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 }

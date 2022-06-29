@@ -1,6 +1,7 @@
 package com.thebeyond;
 
 
+import com.thebeyond.entities.PurpleSlimeEntity;
 import com.thebeyond.entities.models.PurpleSlimeModel;
 import com.thebeyond.entities.renderers.ArmorBallRenderer;
 import com.thebeyond.entities.renderers.PurpleSlimeRenderer;
@@ -11,6 +12,7 @@ import com.thebeyond.init.TBItems;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -35,6 +37,8 @@ public class TheBeyond {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::registerEntityRenders);
+        modEventBus.addListener(this::entityLayerSetup);
+        modEventBus.addListener(this::onAttributeCreate);
         //MinecraftForge.EVENT_BUS.register(this);
 
         TBBlocks.BLOCKS.register(modEventBus);
@@ -57,6 +61,11 @@ public class TheBeyond {
     @SubscribeEvent
     public void entityLayerSetup(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(PurpleSlimeModel.PURPLE_SLIME_MLL, PurpleSlimeModel::createBodyLayer);
+    }
+
+    @SubscribeEvent
+    public void onAttributeCreate(EntityAttributeCreationEvent event) {
+        event.put(TBEntities.PURPLE_SLIME.get(), PurpleSlimeEntity.prepareAttributes().build());
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {

@@ -42,7 +42,7 @@
                 "maxCount": 1
             },
             {
-                "type": "minecraft:magma_cube",
+                "type": "the_beyond:purple_slime",
                 "weight": 100,
                 "minCount": 2,
                 "maxCount": 5

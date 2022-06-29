@@ -1,6 +1,7 @@
 package com.thebeyond.entities.renderers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.thebeyond.TheBeyond;
 import com.thebeyond.entities.PurpleSlimeEntity;
 import com.thebeyond.entities.models.PurpleSlimeModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -14,22 +15,17 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class PurpleSlimeRenderer extends MobRenderer<PurpleSlimeEntity, PurpleSlimeModel<PurpleSlimeEntity>> {
-
-    private static final ResourceLocation PURPLESLIME_LOCATION=new ResourceLocation("textures/entity/livid_corruption/purple_slime_naked.png");
+    private static final ResourceLocation PURPLESLIME_LOCATION=new ResourceLocation(TheBeyond.MOD_ID,"textures/entity/livid_corruption/purple_slime_naked.png");
+    private static final ResourceLocation PURPLESLIME_ARMOR_LOCATION=new ResourceLocation(TheBeyond.MOD_ID,"textures/entity/livid_corruption/purple_slime_armored.png");
 
     public PurpleSlimeRenderer(EntityRendererProvider.Context p_174298_){
         super(p_174298_,new PurpleSlimeModel<>(p_174298_.bakeLayer(PurpleSlimeModel.PURPLE_SLIME_MLL)),0.25F);
     }
-
-    protected int getBlockLightLevel(PurpleSlimeEntity pEntity,BlockPos pPos){
-        return 15;
-    }
-
     /**
      * Returns the location of an entity's texture.
      */
     public ResourceLocation getTextureLocation(PurpleSlimeEntity pEntity){
-        return PURPLESLIME_LOCATION;
+        return pEntity.isCharged() ? PURPLESLIME_ARMOR_LOCATION : PURPLESLIME_LOCATION;
     }
 
     protected void scale(PurpleSlimeEntity pLivingEntity,PoseStack pMatrixStack,float pPartialTickTime){
