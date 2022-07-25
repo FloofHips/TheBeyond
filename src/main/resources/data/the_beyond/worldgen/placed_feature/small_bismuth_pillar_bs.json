@@ -1,0 +1,12 @@
+{
+    "feature": "the_beyond:small_bismuth_pillar_bs",
+    "placement": [
+        {
+            "type": "minecraft:count_on_every_layer",
+            "count": 20
+        },
+        {
+            "type": "minecraft:biome"
+        }
+    ]
+}

@@ -7,9 +7,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(DimensionSpecialEffects.class)
-public interface TBDimensionSpecialEffectsMixin {
+public class TBDimensionSpecialEffectsMixin {
     @Accessor("EFFECTS")
-    static Object2ObjectMap<ResourceLocation, DimensionSpecialEffects> the_beyond_getBY_ResourceLocation() {
+    public static Object2ObjectMap<ResourceLocation, DimensionSpecialEffects> the_beyond_getBY_ResourceLocation() {
         throw new UnsupportedOperationException();
     }
 }

@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.the_beyond.mixin",
+  "package": "com.thebeyond.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "the_beyond.refmap.json",
   "mixins": [
