@@ -1,0 +1,21 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "the_beyond:block/mother_of_pearl",
+		"particle": "the_beyond:block/mother_of_pearl"
+	},
+	"elements": [
+		{
+			"from": [3, 0, 3],
+			"to": [13, 6, 13],
+			"faces": {
+				"north": {"uv": [3, 10, 13, 16], "texture": "#0"},
+				"east": {"uv": [3, 10, 13, 16], "texture": "#0"},
+				"south": {"uv": [3, 10, 13, 16], "texture": "#0"},
+				"west": {"uv": [3, 10, 13, 16], "texture": "#0"},
+				"up": {"uv": [3, 0, 13, 10], "texture": "#0"},
+				"down": {"uv": [3, 0, 13, 10], "texture": "#0"}
+			}
+		}
+	]
+}

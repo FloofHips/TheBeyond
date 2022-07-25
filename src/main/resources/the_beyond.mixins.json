@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.the_beyond.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "the_beyond.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "TBDimensionSpecialEffectsMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

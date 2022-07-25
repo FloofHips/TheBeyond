@@ -11,11 +11,7 @@
                     "to_place": {
                         "type": "minecraft:simple_state_provider",
                         "state": {
-                            "Name": "minecraft:amethyst_cluster",
-                            "Properties": {
-                                "facing": "up",
-                                "waterlogged": "false"
-                            }
+                            "Name": "the_beyond:magnolilly"
                         }
                     }
                 }

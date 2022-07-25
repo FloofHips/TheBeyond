@@ -1,15 +1,29 @@
 package com.thebeyond.event;
 
 import com.thebeyond.TheBeyond;
+import com.thebeyond.dimension.TheBeyondSpecialEffects;
 import com.thebeyond.init.TBBlocks;
+import com.thebeyond.init.TBParticles;
+import com.thebeyond.mixin.TBDimensionSpecialEffectsMixin;
+import com.thebeyond.particles.DisplacedEyeParticle;
+import com.thebeyond.particles.TBFireParticle;
+import com.thebeyond.particles.VoidSmokeParticle;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.renderer.DimensionSpecialEffects;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
 import net.minecraft.world.level.levelgen.synth.SimplexNoise;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = TheBeyond.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientEvents {
@@ -205,6 +219,24 @@ public class ClientEvents {
         return Math.abs(Mth.frac(f) - 0.5F) * 2.0F;
     }
 
+    @SubscribeEvent
+    public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
+        Minecraft.getInstance().particleEngine.register(TBParticles.VOID_SMOKE.get(), VoidSmokeParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(TBParticles.DISPLACED_EYE.get(), DisplacedEyeParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(TBParticles.FIRE.get(), TBFireParticle.Provider::new);
+    }
+
+    public static void subscribeClientEvents() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        modEventBus.addListener(ClientEvents::onClientSetup);
+    }
+
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            TBDimensionSpecialEffectsMixin.the_beyond_getBY_ResourceLocation()
+                    .put(new ResourceLocation(TheBeyond.MOD_ID, "tb_sky_property"), new TheBeyondSpecialEffects());
+        });
+    }
 
 
 }

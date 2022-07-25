@@ -237,7 +237,8 @@ public class PurpleSlimeAI {
          * method as well.
          */
         public boolean canUse() {
-            return this.purpleSlime.getTarget() != null;
+            LivingEntity livingentity = this.purpleSlime.getTarget();
+            return (this.purpleSlime.getTarget() != null && this.purpleSlime.isCharged()==true && livingentity.distanceToSqr(this.purpleSlime) > 100.0D) ;
         }
 
         /**
@@ -276,12 +277,13 @@ public class PurpleSlimeAI {
                         double d3 = livingentity.getY(0.5D) - (0.5D + this.purpleSlime.getY(0.5D));
                         double d4 = livingentity.getZ() - (this.purpleSlime.getZ() + vec3.z * 4.0D);
                         if (!this.purpleSlime.isSilent()) {
-                            level.levelEvent((Player)null, 1016, this.purpleSlime.blockPosition(), 0);
+                            this.purpleSlime.playSound(this.purpleSlime.getShootSound(), this.purpleSlime.getSoundVolume(), this.purpleSlime.getSoundPitch());
                         }
 
                         ArmorBall armorBall = new ArmorBall(level, this.purpleSlime, d2, d3, d4, 1);
                         armorBall.setPos(this.purpleSlime.getX() + vec3.x * 4.0D, this.purpleSlime.getY(0.5D) + 0.5D, armorBall.getZ() + vec3.z * 4.0D);
                         level.addFreshEntity(armorBall);
+
                         this.chargeTime = -40;
                         this.purpleSlime.setCharged(false);
                     }
@@ -301,6 +303,10 @@ public class PurpleSlimeAI {
             this.chargingTime = 0;
         }
 
+        public boolean canContinueToUse() {
+            return !this.purpleSlime.isCharged();
+        }
+
         public SlimeChargeGoal(PurpleSlimeEntity p_32776_) {
             this.purpleSlime = p_32776_;
         }
@@ -313,11 +319,14 @@ public class PurpleSlimeAI {
         }
 
         public boolean canUse() {
-            return this.purpleSlime.getTarget() != null;
+            LivingEntity livingentity = this.purpleSlime.getTarget();
+            if (this.purpleSlime.getTarget() != null && (livingentity.distanceToSqr(this.purpleSlime)> 1000.0D));
+                {return true;}
         }
         public void tick() {
-            if (this.purpleSlime.getTarget() != null && this.purpleSlime.isCharged()==false)
-                {List<Entity> areaList = purpleSlime.level.getEntities(purpleSlime, purpleSlime.getBoundingBox().inflate(10), e -> e instanceof LivingEntity );
+            LivingEntity livingentity = this.purpleSlime.getTarget();
+            if (this.purpleSlime.getTarget() != null && this.purpleSlime.isCharged()==false && (livingentity.distanceToSqr(this.purpleSlime)> 100.0D))
+                {List<Entity> areaList = purpleSlime.level.getEntities(purpleSlime, purpleSlime.getBoundingBox().inflate(10), e -> e instanceof ItemEntity );
                 Vec3 speedVec = new Vec3(1, 1, 1);
 
                 areaList.forEach(e -> {
@@ -328,7 +337,7 @@ public class PurpleSlimeAI {
                     e.setDeltaMovement(e.getDeltaMovement().add(diff));});
                 this.purpleSlime.playSound(this.purpleSlime.getSquishSound(), this.purpleSlime.getSoundVolume(), this.purpleSlime.getSoundPitch());
                 chargingTime++;
-                if(chargingTime==40)
+                if(chargingTime==20)
                 {
                     this.purpleSlime.playSound(this.purpleSlime.getDeathSound(), this.purpleSlime.getSoundVolume(), this.purpleSlime.getSoundPitch());
                     this.purpleSlime.setCharged(true);

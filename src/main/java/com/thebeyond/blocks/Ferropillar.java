@@ -2,8 +2,10 @@ package com.thebeyond.blocks;
 
 import com.thebeyond.blocks.TBBlockstates.Imbalance;
 import com.thebeyond.init.TBBlocks;
+import com.thebeyond.init.TBParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -17,6 +19,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 import java.util.Random;
+
+import static com.thebeyond.blocks.FerrousCatalyst.AGE;
 
 public class Ferropillar extends Block {
     public Ferropillar(Properties p_49795_) {
@@ -36,11 +40,22 @@ public class Ferropillar extends Block {
 
 
     private static void activateCatalyst(BlockState pState, Level pLevel, BlockPos pPos) {
-        pLevel.setBlockAndUpdate(pPos, pState.setValue(FerrousCatalyst.AGE, 0));
+        pLevel.setBlockAndUpdate(pPos, pState.setValue(AGE, 0));
     }
 
     public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        return pFacing == Direction.DOWN ? pState.setValue(ENERGIZED, Boolean.valueOf(true)) : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+        if (pFacing == Direction.DOWN)
+        {
+            if (pLevel.getBlockState(pCurrentPos.below()).getBlock() instanceof Ferropillar)
+                if (pLevel.getBlockState(pCurrentPos.below()).getValue(ENERGIZED))
+                    return pState.setValue(ENERGIZED, Boolean.valueOf(true));
+            if (pLevel.getBlockState(pCurrentPos.above()).getBlock() instanceof FerrousCatalyst)
+                {
+                    pLevel.addParticle(TBParticles.VOID_SMOKE.get(), pCurrentPos.getX(), pCurrentPos.getY(), pCurrentPos.getZ(), 0.0D, 2.0D, 0.0D);
+                    return pState.setValue(ENERGIZED, Boolean.valueOf(true));
+                }
+        }
+        return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
     }
 
     public boolean isRandomlyTicking(BlockState pState) {

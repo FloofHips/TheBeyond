@@ -43,9 +43,9 @@
             },
             {
                 "type": "the_beyond:purple_slime",
-                "weight": 100,
-                "minCount": 2,
-                "maxCount": 5
+                "weight": 5,
+                "minCount": 0,
+                "maxCount": 1
             }
         ],
         "creature": [

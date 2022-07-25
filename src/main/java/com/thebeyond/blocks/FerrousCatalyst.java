@@ -1,6 +1,8 @@
 package com.thebeyond.blocks;
 
 import com.thebeyond.blocks.TBBlockstates.Imbalance;
+import com.thebeyond.entities.PurpleSlimeEntity;
+import com.thebeyond.init.TBEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -52,10 +54,10 @@ public class FerrousCatalyst extends Block {
             } else if ((pState.getValue(AGE) == 2)) {
                 this.setAge(pState, pLevel, pPos, 3);
             }
-            // else if ((pState.getValue(AGE) == 3)) {
-            //  this.setAge(pState, pLevel, pPos, 0);
-            //    activateCatalyst(pLevel, pPos);
-            //}
+             else if ((pState.getValue(AGE) == 3)) {
+              this.setAge(pState, pLevel, pPos, 0);
+                activateCatalyst(pLevel, pPos);
+            }
         }
     }
 
@@ -64,7 +66,7 @@ public class FerrousCatalyst extends Block {
     }
 
     public void activateCatalyst(ServerLevel pLevel, BlockPos pPos){
-        Slime slime = EntityType.SLIME.create(pLevel);
+        PurpleSlimeEntity slime = TBEntities.PURPLE_SLIME.get().create(pLevel);
         slime.moveTo((double)pPos.getX(), (double)pPos.getY() + 0.5D, (double)pPos.getZ(), 0.0F, 0.0F);
         pLevel.addFreshEntity(slime);
         slime.spawnAnim();

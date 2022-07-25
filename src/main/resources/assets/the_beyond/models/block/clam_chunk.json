@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/cube_bottom_top",
+    "textures": {
+        "top": "the_beyond:block/clam_chunk_top",
+        "bottom": "the_beyond:block/clam_chunk_bottom",
+        "side": "the_beyond:block/clam_chunk_side"
+    }
+}

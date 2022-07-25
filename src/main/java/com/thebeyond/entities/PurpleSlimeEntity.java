@@ -1,6 +1,7 @@
 package com.thebeyond.entities;
 
 import com.thebeyond.init.TBEntities;
+import com.thebeyond.init.TBParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -61,18 +62,12 @@ public class PurpleSlimeEntity extends Slime {
     }
 
     protected void registerGoals() {
-
-        if(this.entityData.get(DATA_ARMORED)==false){
-            this.goalSelector.addGoal(6, new PurpleSlimeAI.SlimeRangedAttackGoal(this));
-        }
-//        if(isCharged()){
-            this.goalSelector.addGoal(1, new PurpleSlimeAI.SlimeFloatGoal(this));
-            this.goalSelector.addGoal(2, new PurpleSlimeAI.SlimeAttackGoal(this));
-            this.goalSelector.addGoal(3, new PurpleSlimeAI.SlimeRandomDirectionGoal(this));
-            this.goalSelector.addGoal(5, new PurpleSlimeAI.SlimeKeepOnJumpingGoal(this));
-            this.goalSelector.addGoal(2, new PurpleSlimeAI.SlimeChargeGoal(this));
-//        }
-
+        this.goalSelector.addGoal(6, new PurpleSlimeAI.SlimeRangedAttackGoal(this));
+        this.goalSelector.addGoal(1, new PurpleSlimeAI.SlimeFloatGoal(this));
+        this.goalSelector.addGoal(2, new PurpleSlimeAI.SlimeAttackGoal(this));
+        this.goalSelector.addGoal(3, new PurpleSlimeAI.SlimeRandomDirectionGoal(this));
+        this.goalSelector.addGoal(2, new PurpleSlimeAI.SlimeKeepOnJumpingGoal(this));
+        this.goalSelector.addGoal(4, new PurpleSlimeAI.SlimeChargeGoal(this));
 
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (p_33641_) -> {
             return Math.abs(p_33641_.getY() - this.getY()) <= 4.0D;
@@ -116,7 +111,7 @@ public class PurpleSlimeEntity extends Slime {
     }
 
     protected ParticleOptions getParticleType() {
-        return ParticleTypes.PORTAL;
+        return TBParticles.VOID_SMOKE.get();
     }
 
     protected ResourceLocation getDefaultLootTable() {
@@ -201,19 +196,17 @@ public class PurpleSlimeEntity extends Slime {
         return SoundEvents.MAGMA_CUBE_JUMP;
     }
 
-//    private void shoot(LivingEntity pTarget) {
-//        LlamaSpit llamaSpit = new LlamaSpit(EntityType.LLAMA_SPIT, this.level);
-//        double d0 = pTarget.getX() - this.getX();
-//        double d1 = pTarget.getY(0.3333333333333333D) - llamaSpit.getY();
-//        double d2 = pTarget.getZ() - this.getZ();
-//        double d3 = Math.sqrt(d0 * d0 + d2 * d2) * (double)0.2F;
-//        llamaSpit.shoot(d0, d1 + d3, d2, 1.5F, 10.0F);
-//        if (!this.isSilent()) {
-//            this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.LLAMA_SPIT, this.getSoundSource(), 1.0F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F);
-//        }
-//
-//        this.level.addFreshEntity(llamaSpit);
-//    }
+    protected SoundEvent getArmorSound() {
+        return SoundEvents.ANVIL_PLACE;
+    }
+
+    protected SoundEvent getChargeSound() {
+        return SoundEvents.BEACON_ACTIVATE;
+    }
+
+    protected SoundEvent getShootSound() {
+        return SoundEvents.BEACON_POWER_SELECT;
+    }
 
     public class SlimeMoveControl extends MoveControl {
         private float yRot;

@@ -2,6 +2,7 @@ package com.thebeyond.entities;
 
 import com.google.common.base.MoreObjects;
 import com.thebeyond.init.TBEntities;
+import com.thebeyond.init.TBParticles;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -46,7 +47,7 @@ public class ArmorBall extends Fireball {
     }
 
     protected ParticleOptions getTrailParticle() {
-        return ParticleTypes.PORTAL;
+        return TBParticles.VOID_SMOKE.get();
     }
 
     /**

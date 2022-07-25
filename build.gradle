@@ -7,12 +7,14 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 
 version = "${mc_version}-${mod_version}"
 group = "com.${team_id}.${mod_id}"
@@ -35,7 +37,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                the_beyond {
                     source sourceSets.main
                 }
             }
@@ -48,7 +50,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                the_beyond {
                     source sourceSets.main
                 }
             }
@@ -64,7 +66,7 @@ minecraft {
             args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                the_beyond {
                     source sourceSets.main
                 }
             }
@@ -88,7 +90,14 @@ dependencies {
 
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
     runtimeOnly fg.deobf("team.chisel.ctm:CTM:1.18.2-1.1.4+4")
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
+}
+
+mixin {
+    // MixinGradle Settings
+    add sourceSets.main, "the_beyond.refmap.json"
+    config "the_beyond.mixins.json"
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

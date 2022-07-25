@@ -6,12 +6,10 @@ import com.thebeyond.blocks.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -28,6 +26,8 @@ public class TBBlocks {
     public static final RegistryObject<Block> COMPRESSED_SAND    = registerBlock("compressed_sand", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHERRACK).strength(1f)), TBCreativeTab.THE_BEYOND);
                                             //BIOLUMINESCENT
     public static final RegistryObject<Block> GLOW_SAND          = registerBlock("glow_sand", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHERRACK).strength(1f).lightLevel(state -> 13)), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> CLAM_CHUNK        = registerBlock("clam_chunk", () -> new ClamBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.DEEPSLATE_TILES).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> MOTHER_OF_PEARL        = registerBlock("mother_of_pearl", () -> new MotherOfPearlBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.SHROOMLIGHT).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
 
     //Magnetic Field
     public static final RegistryObject<Block> FERROUS_CATALYST   = registerBlock("ferrous_catalyst", () -> new FerrousCatalyst(BlockBehaviour.Properties.of(Material.METAL).strength(1.5f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
@@ -62,7 +62,7 @@ public class TBBlocks {
     public static final RegistryObject<Block> DISFIGURED_OAK_LOG = registerBlock("disfigured_oak_log", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).sound(SoundType.BASALT).strength(2f)), TBCreativeTab.THE_BEYOND);
     public static final RegistryObject<Block> DISFIGURED_OAK_LEAVES = registerBlock("disfigured_oak_leaves", () -> new Block(BlockBehaviour.Properties.of(Material.LEAVES).sound(SoundType.AZALEA_LEAVES).strength(1f)), TBCreativeTab.THE_BEYOND);
     public static final RegistryObject<Block> DISFIGURED_VINES   = registerBlock("disfigured_vines", () -> new Block(BlockBehaviour.Properties.of(Material.LEAVES).sound(SoundType.AZALEA_LEAVES).strength(1f)), TBCreativeTab.THE_BEYOND);
-    public static final RegistryObject<Block> DISPLACED_EYE      = registerBlock("displaced_eye", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GLASS).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> DISPLACED_EYE      = registerBlock("displaced_eye", () -> new DisplacedEyeBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GLASS).strength(3f).noOcclusion().noCollission().requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
 
     //Bismuthian Palace
     public static final RegistryObject<Block> BISMUTH            = registerBlock("bismuth", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.BONE_BLOCK).strength(3f).noOcclusion().requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
@@ -72,6 +72,9 @@ public class TBBlocks {
     public static final RegistryObject<Block> BISMUTH_PILLAR     = registerBlock("bismuth_pillar", () -> new PillarBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.BONE_BLOCK).strength(3f).noOcclusion().dynamicShape().requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
     public static final RegistryObject<Block> CRYSTAL_GROWTH     = registerBlock("crystal_growth", () -> new EndBushBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.BASALT).noCollission().strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
 
+    //The Beyond
+    public static final RegistryObject<Block> SINGULARITY_BRANCH = registerBlock("singularity_branch", () -> new SingularityBranch(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_PURPLE).strength(0.4F).sound(SoundType.SHROOMLIGHT).lightLevel(state -> 16)), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> SINGULARITY_BLOCK  = registerBlock("singularity_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.SHROOMLIGHT).strength(3f).lightLevel(state -> 16).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

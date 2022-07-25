@@ -72,15 +72,18 @@
         [],
         [],
         [],
-        [],
         [
-            "the_beyond:frost_puddle"
+	    "the_beyond:frost_puddle"
+	],
+        [
+                        
         ],
         [
-            "the_beyond:bismuth_pillar"
+	    "the_beyond:bismuth_formation"
         ],
         [
-            "the_beyond:small_bismuth_pillar"
+            "the_beyond:small_bismuth_pillar",
+	    "the_beyond:small_bismuth_pillar_bs"
         ],
         [
 	    "the_beyond:crystal_growth"

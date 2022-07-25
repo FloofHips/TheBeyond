@@ -1,16 +1,18 @@
 package com.thebeyond;
 
-
+import com.thebeyond.dimension.TheBeyondSpecialEffects;
 import com.thebeyond.entities.PurpleSlimeEntity;
 import com.thebeyond.entities.models.PurpleSlimeModel;
 import com.thebeyond.entities.renderers.ArmorBallRenderer;
 import com.thebeyond.entities.renderers.PurpleSlimeRenderer;
-import com.thebeyond.init.TBBiomes;
-import com.thebeyond.init.TBBlocks;
-import com.thebeyond.init.TBEntities;
-import com.thebeyond.init.TBItems;
+import com.thebeyond.event.ClientEvents;
+import com.thebeyond.init.*;
+import com.thebeyond.mixin.TBDimensionSpecialEffectsMixin;
+import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,6 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,10 +31,15 @@ import java.util.Set;
 public class TheBeyond {
 
     public static final Logger LOGGER = LogManager.getLogger();
-
+    public static final ResourceLocation MOD_DIMENSION_ID = new ResourceLocation(TheBeyond.MOD_ID, TheBeyond.MOD_ID);
     public static final String MOD_ID = "the_beyond";
 
     public TheBeyond() {
+
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            ClientEvents.subscribeClientEvents();
+        }
+
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
@@ -39,12 +47,12 @@ public class TheBeyond {
         modEventBus.addListener(this::registerEntityRenders);
         modEventBus.addListener(this::entityLayerSetup);
         modEventBus.addListener(this::onAttributeCreate);
-        //MinecraftForge.EVENT_BUS.register(this);
 
         TBBlocks.BLOCKS.register(modEventBus);
         TBItems.ITEMS.register(modEventBus);
         TBEntities.ENTITIES.register(modEventBus);
-        TBBiomes.BIOMES.register(modEventBus);
+        TBParticles.PARTICLE_TYPES.register(modEventBus);
+        TBFeatures.FEATURES.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -69,6 +77,10 @@ public class TheBeyond {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+//        event.enqueueWork(() -> {
+//            TBDimensionSpecialEffectsMixin.the_beyond_getBY_ResourceLocation().put(new ResourceLocation(TheBeyond.MOD_ID, "the_beyond_sky_property"), new TheBeyondSpecialEffects());
+//        });
+
         ItemBlockRenderTypes.setRenderLayer(TBBlocks.POLAR_ANTENNA.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(TBBlocks.POROUS_REED.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(TBBlocks.HOLLOW_REED.get(), RenderType.cutout());
@@ -80,7 +92,6 @@ public class TheBeyond {
         ItemBlockRenderTypes.setRenderLayer(TBBlocks.MAGNOLILLY.get(), RenderType.cutout());
 
     }
-
     ////TODO
 //    private static <T extends Entity, V extends T> void registerEntityRenderingHandler(RegisterRenderers event, Supplier<EntityType<V>> type, EntityRendererProvider<T> renderer) {
 //        event.registerEntityRenderer(type.get(), renderer);
