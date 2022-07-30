@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "the_beyond:block/shrybulb"
+        "layer0": "the_beyond:block/bismuth_pillar_tip"
     }
 }

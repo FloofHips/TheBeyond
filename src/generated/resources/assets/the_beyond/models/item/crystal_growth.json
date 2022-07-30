@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "the_beyond:item/ocarina"
+        "layer0": "the_beyond:block/crystal_growth"
     }
 }

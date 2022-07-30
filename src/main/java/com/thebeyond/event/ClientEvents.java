@@ -18,7 +18,6 @@ import net.minecraft.world.level.levelgen.synth.SimplexNoise;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -232,13 +231,12 @@ public class ClientEvents {
     }
 
     public static void onClientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            TBDimensionSpecialEffectsMixin.the_beyond_getBY_ResourceLocation()
-                    .put(new ResourceLocation(TheBeyond.MOD_ID, "tb_sky_property"), new TheBeyondSpecialEffects());
-        });
+//        event.enqueueWork(() -> {
+//            TBDimensionSpecialEffectsMixin.the_beyond_getBY_ResourceLocation()
+//                    .put(new ResourceLocation(TheBeyond.MOD_ID, "tb_sky_property"), new TheBeyondSpecialEffects());
+//        });
+        DimensionSpecialEffects.EFFECTS.put(new ResourceLocation(TheBeyond.MOD_ID, "tb_sky_property"), new TheBeyondSpecialEffects());
     }
-
-
 }
 
 //refactored code, a bit broken.. oops!

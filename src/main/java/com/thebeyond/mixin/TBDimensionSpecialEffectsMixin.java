@@ -7,9 +7,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(DimensionSpecialEffects.class)
-public class TBDimensionSpecialEffectsMixin {
+public interface TBDimensionSpecialEffectsMixin {
     @Accessor("EFFECTS")
     public static Object2ObjectMap<ResourceLocation, DimensionSpecialEffects> the_beyond_getBY_ResourceLocation() {
+        System.out.println("testing");
         throw new UnsupportedOperationException();
     }
 }

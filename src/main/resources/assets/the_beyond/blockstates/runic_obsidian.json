@@ -1,7 +1,86 @@
 {
   "variants": {
-    "": {
-      "model": "the_beyond:block/runic_obsidian"
-    }
+    "": [
+      {
+        "model": "the_beyond:block/runic_obsidian"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_0"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_1"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_2"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_3"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_4"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_5"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_6"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_7"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_8"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_9"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_10"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_11"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_12"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_13"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_14"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_15"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_16"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_17"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_18"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_19"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_20"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_21"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_22"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_23"
+      },
+      {
+        "model": "the_beyond:block/runic_obsidian_24"
+      }
+    ]
   }
 }
+
+

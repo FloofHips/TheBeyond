@@ -8,7 +8,7 @@ public class TBCreativeTab {
     public static final CreativeModeTab THE_BEYOND = new CreativeModeTab("The Beyond") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(TBItems.MAGNETITE.get());
+            return new ItemStack(TBItems.MAGNET.get());
         }
     };
 }

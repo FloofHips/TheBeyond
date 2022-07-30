@@ -16,7 +16,7 @@ public class TBItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TheBeyond.MOD_ID);
 
-    public static final RegistryObject<Item> MAGNETITE = ITEMS.register("magnetite", () -> new Item(new Item.Properties().tab(TBCreativeTab.THE_BEYOND)));
+    public static final RegistryObject<Item> FERRO_PETAL = ITEMS.register("ferro_petal", () -> new Item(new Item.Properties().tab(TBCreativeTab.THE_BEYOND)));
     public static final RegistryObject<Item> MAGNET = ITEMS.register("magnet", () -> new MagnetItem(new Item.Properties().tab(TBCreativeTab.THE_BEYOND)));
     public static final RegistryObject<Item> PURPLE_SLIME_EGG = ITEMS.register("purple_slime_spawn_egg", () -> new ForgeSpawnEggItem(TBEntities.PURPLE_SLIME, 0x19181a, 0x9021f2, new Item.Properties().tab(TBCreativeTab.THE_BEYOND)));
 

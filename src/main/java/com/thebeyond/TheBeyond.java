@@ -1,5 +1,7 @@
 package com.thebeyond;
 
+import com.mojang.authlib.yggdrasil.YggdrasilEnvironment;
+import com.thebeyond.data.*;
 import com.thebeyond.dimension.TheBeyondSpecialEffects;
 import com.thebeyond.entities.PurpleSlimeEntity;
 import com.thebeyond.entities.models.PurpleSlimeModel;
@@ -11,9 +13,11 @@ import com.thebeyond.mixin.TBDimensionSpecialEffectsMixin;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,6 +26,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -47,6 +52,7 @@ public class TheBeyond {
         modEventBus.addListener(this::registerEntityRenders);
         modEventBus.addListener(this::entityLayerSetup);
         modEventBus.addListener(this::onAttributeCreate);
+        modEventBus.addListener(this::gatherData);
 
         TBBlocks.BLOCKS.register(modEventBus);
         TBItems.ITEMS.register(modEventBus);
@@ -92,10 +98,19 @@ public class TheBeyond {
         ItemBlockRenderTypes.setRenderLayer(TBBlocks.MAGNOLILLY.get(), RenderType.cutout());
 
     }
-    ////TODO
-//    private static <T extends Entity, V extends T> void registerEntityRenderingHandler(RegisterRenderers event, Supplier<EntityType<V>> type, EntityRendererProvider<T> renderer) {
-//        event.registerEntityRenderer(type.get(), renderer);
-//    }
+    @SubscribeEvent
+    public void gatherData(GatherDataEvent event)
+    {
+//        DataGenerator TBgen = event.getGenerator();
+//        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+//
+//        TBgen.addProvider(new TBItemModelGen(TBgen));
 
+        event.getGenerator().addProvider(new TBBlockstateGen(event.getGenerator(), event.getExistingFileHelper()));
+        event.getGenerator().addProvider(new TBItemModels(event.getGenerator(), event.getExistingFileHelper()));
+        event.getGenerator().addProvider(new TBLangGen(event.getGenerator()));
+        //event.getGenerator().addProvider(provider);
+        //event.getGenerator().addProvider(new TBLootTableGen(event.getGenerator()));
+    }
 }
 
