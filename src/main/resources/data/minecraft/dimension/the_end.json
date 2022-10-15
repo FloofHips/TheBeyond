@@ -8,75 +8,180 @@
             "type": "minecraft:multi_noise",
             "biomes": [
                 {
+                    "biome": "the_beyond:meduzoa_grave",
+                    "parameters": {
+                        "temperature": [
+                            -1,
+                            1
+                        ],
+                        "humidity": [
+                            -1,
+                            1
+                        ],
+                        "continentalness": [
+                            -1,
+                            0
+                        ],
+                        "erosion": [
+                            -1,
+                            -0.3
+                        ],
+                        "weirdness": [
+                            -1,
+                            1
+                        ],
+                        "depth": -2,
+                        "offset": 1
+                    }
+                },
+                {
                     "biome": "the_beyond:magnetic_field",
                     "parameters": {
-                        "temperature": 0,
-                        "humidity": 0.7,
-                        "continentalness": 0,
-                        "erosion": 0,
-                        "weirdness": 0,
-                        "depth": 0,
-                        "offset": 0
+                        "temperature": [
+                            -1,
+                            1
+                        ],
+                        "humidity": [
+                            -1,
+                            -0.2
+                        ],
+                        "continentalness": [
+                            -1,
+                            0
+                        ],
+                        "erosion": [
+                            -1,
+                            1
+                        ],
+                        "weirdness": [
+                            -1,
+                            1
+                        ],
+                        "depth": [
+                            -1.4,
+                            1
+                        ],
+                        "offset": 0.49
                     }
                 },
                 {
                     "biome": "the_beyond:bismuthian_palace",
                     "parameters": {
-                        "temperature": 0,
-                        "humidity": -0.7,
-                        "continentalness": 0,
-                        "erosion": 0,
-                        "weirdness": 0,
-                        "depth": 0,
-                        "offset": 0
+                        "temperature": [
+                            0,
+                            1
+                        ],
+                        "humidity": [
+                            -1,
+                            1
+                        ],
+                        "continentalness": [
+                            0.3,
+                            1
+                        ],
+                        "erosion": [
+                            -1,
+                            -0.15
+                        ],
+                        "weirdness": [
+                            -0.475,
+                            0.475
+                        ],
+                        "depth": [
+                            -1.4,
+                            1
+                        ],
+                        "offset": 0.49
                     }
                 },
                 {
                     "biome": "the_beyond:great_graveyard",
                     "parameters": {
-                        "temperature": 0.9,
-                        "humidity": 0,
-                        "continentalness": 0,
-                        "erosion": 0,
-                        "weirdness": 0,
-                        "depth": 0,
-                        "offset": 0
-                    }
-                },
-                {
-                    "biome": "the_beyond:disfigured_forest",
-                    "parameters": {
-                        "temperature": 0,
-                        "humidity": 0.4,
-                        "continentalness": 0,
-                        "erosion": 0,
-                        "weirdness": 0,
-                        "depth": 0,
-                        "offset": 0.375
-                    }
-                },
-                {
-                    "biome": "the_beyond:orchestral_valley",
-                    "parameters": {
-                        "temperature": -0.5,
-                        "humidity": 0,
-                        "continentalness": 0,
-                        "erosion": 0,
-                        "weirdness": 0,
-                        "depth": 0,
-                        "offset": 0.175
+                        "temperature": [
+                            0,
+                            1
+                        ],
+                        "humidity": [
+                            -1,
+                            1
+                        ],
+                        "continentalness": [
+                            0.3,
+                            1
+                        ],
+                        "erosion": [
+                            -1,
+                            -0.15
+                        ],
+                        "weirdness": [
+                            0.475,
+                            1
+                        ],
+                        "depth": [
+                            -1.4,
+                            1
+                        ],
+                        "offset": 0.485
                     }
                 },
                 {
                     "biome": "the_beyond:pearlescent_planes",
                     "parameters": {
-                        "temperature": 0,
-                        "humidity": 0,
-                        "continentalness": 0,
-                        "erosion": 0,
-                        "weirdness": 1,
-                        "depth": 0,
-                        "offset": 0.175
+                        "temperature": [
+                            0,
+                            1
+                        ],
+                        "humidity": [
+                            -1,
+                            1
+                        ],
+                        "continentalness": [
+                            0.3,
+                            1
+                        ],
+                        "erosion": [
+                            -1,
+                            -0.15
+                        ],
+                        "weirdness": [
+                            -1,
+                            -0.475
+                        ],
+                        "depth": [
+                            -1.4,
+                            1
+                        ],
+                        "offset": 0.485
+                    }
+                },
+                {
+                    "biome": "the_beyond:disfigured_forest",
+                    "parameters": {
+                        "temperature": [
+                            -1,
+                            1
+                        ],
+                        "humidity": [
+                            -1,
+                            1
+                        ],
+                        "continentalness": [
+                            -1,
+                            1
+                        ],
+                        "erosion": [
+                            -1,
+                            1
+                        ],
+                        "weirdness": [
+                            -1,
+                            1
+                        ],
+                        "depth": [
+                            -1.4,
+                            1
+                        ],
+                        "offset": 0.5
                     }
                 }
             ]

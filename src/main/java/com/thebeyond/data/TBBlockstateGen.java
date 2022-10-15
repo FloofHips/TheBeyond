@@ -16,8 +16,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.thebeyond.init.TBBlocks.BLOCKS;
-import static com.thebeyond.init.TBBlocks.DISFIGURED_OAK_LOG;
+import static com.thebeyond.init.TBBlocks.*;
 import static net.minecraft.Util.prefix;
 import static net.minecraft.world.level.block.state.properties.DoubleBlockHalf.LOWER;
 import static net.minecraft.world.level.block.state.properties.DoubleBlockHalf.UPPER;
@@ -31,7 +30,16 @@ public class TBBlockstateGen extends net.minecraftforge.client.model.generators.
     protected void registerStatesAndModels() {
         Set<RegistryObject<Block>> blocks = new HashSet<>(BLOCKS.getEntries());
 
-        basicBlock(DISFIGURED_OAK_LOG);
+        basicBlock(PEARL_BRICKS);
+        basicBlock(CHISELED_PEARL);
+        basicBlock(SMOOTH_PEARL);
+        basicBlock(PEARL_PILLAR);
+        basicBlock(COBBLED_PEARL);
+        basicBlock(COBBLED_PEARL_BRICKS);
+        basicBlock(SMOOTH_COBBLED_PEARL);
+
+        //basicBlock(GALVANIZED_ROOF_TILES);
+        //stairsBlock(ZARDINE_STAIRS);
 
 //        DataHelper.takeAll(blocks, customModels::contains);
 //        DataHelper.takeAll(blocks, predefinedModels::contains).forEach(this::customBlock);

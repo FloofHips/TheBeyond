@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "the_beyond:block/galvanized_lilim",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "the_beyond:block/galvanized_lilim",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "the_beyond:block/galvanized_lilim",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "the_beyond:block/galvanized_lilim",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "the_beyond:block/galvanized_lilim"
+    },
+    "facing=west": {
+      "model": "the_beyond:block/galvanized_lilim",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

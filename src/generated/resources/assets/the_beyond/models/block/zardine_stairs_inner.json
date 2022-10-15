@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "the_beyond:block/zardine",
+    "bottom": "the_beyond:block/zardine",
+    "top": "the_beyond:block/zardine"
+  }
+}

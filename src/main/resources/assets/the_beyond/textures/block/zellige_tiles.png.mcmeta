@@ -1,0 +1,9 @@
+{
+    "ctm":{
+        "ctm_version": 1,
+        "type":"CTM",
+        "textures":[
+            "the_beyond:block/zellige_tiles_ctm"
+        ]
+    }
+}

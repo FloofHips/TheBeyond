@@ -1,0 +1,26 @@
+{
+  "temperature": 2,
+  "downfall": 0,
+  "precipitation": "none",
+  "category": "the_end",
+  "creature_spawn_probability": 0.07,
+  "effects": {
+    "sky_color": 15791489,
+        "fog_color": 14660465,
+        "water_color": 4159204,
+        "water_fog_color": 329011,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    }
+  },
+    "spawners": {},
+    "spawn_costs": {},
+    "carvers": {},
+    "features": [
+        "the_beyond:long_island"
+    ]
+}
+

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "the_beyond:block/galvanized_bismuth",
+    "side": "the_beyond:block/galvanized_lilim",
+    "top": "the_beyond:block/lilim_tiles"
+  }
+}

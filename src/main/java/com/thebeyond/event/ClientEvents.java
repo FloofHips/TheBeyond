@@ -130,7 +130,7 @@ public class ClientEvents {
             return 0xFFFFFF;
 
 
-        }, TBBlocks.PEARL_BLOCK.get());
+        }, TBBlocks.PEARL_BLOCK.get(), TBBlocks.CHISELED_PEARL.get(), TBBlocks.PEARL_BRICKS.get(), TBBlocks.PEARL_PILLAR.get(), TBBlocks.SMOOTH_PEARL.get());
         colors.register((state, reader, pos, tintIndex) -> {
             if (pos != null) {
                 //   double NoiseValue = (double) ((Mth.sin(0.3F * pos.getX() + 0.1F * pos.getY() + 0.4F * pos.getZ() + (float) noise.getValue(pos.getX() * 0.1F, pos.getY() * 0.1F, pos.getZ() * 0.1F) * 3F)));

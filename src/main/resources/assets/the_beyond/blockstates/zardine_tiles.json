@@ -1,0 +1,80 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "the_beyond:block/zardine_tiles"
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "x": 90
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "x": 180
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "x": -90
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "y": 90
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "y": 90,
+        "x": 90
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "y": 90,
+        "x": 180
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "x": -90,
+        "y": 90
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "y": 180
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "y": 180,
+        "x": 90
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "y": 180,
+        "x": -90
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "y": -90
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "x": 90,
+        "y": -90
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "y": -90,
+        "x": 180
+      },
+      {
+        "model": "the_beyond:block/zardine_tiles",
+        "y": -90,
+        "x": -90
+      }
+    ]
+  }
+}
+
+

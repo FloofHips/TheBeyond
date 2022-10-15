@@ -16,28 +16,11 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 
-public class ClamBlock extends DirectionalBlock {
+public class ClamBlock extends TBDirectionalBlock {
     public ClamBlock(Properties p_52591_) {
         super(p_52591_);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP));
     }
-
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING);
-    }
-
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(FACING, pContext.getNearestLookingDirection().getOpposite());
-    }
-
-    public BlockState rotate(BlockState p_154354_, Rotation p_154355_) {
-        return p_154354_.setValue(FACING, p_154355_.rotate(p_154354_.getValue(FACING)));
-    }
-
-    public BlockState mirror(BlockState p_154351_, Mirror p_154352_) {
-        return p_154351_.setValue(FACING, p_154352_.mirror(p_154351_.getValue(FACING)));
-    }
-
     public SoundType getSoundType(BlockState pState) {
         if(pState.getValue(FACING)== Direction.UP)
             return SoundType.SLIME_BLOCK;

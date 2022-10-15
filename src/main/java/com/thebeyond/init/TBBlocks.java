@@ -21,13 +21,25 @@ public class TBBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, TheBeyond.MOD_ID);
 
+    public static final RegistryObject<Block> NULL_SHALE        = registerBlock("null_shale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.TUFF).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> ZAROBLENDE        = registerBlock("zaroblende", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.DRIPSTONE_BLOCK).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> CRYSTAL_VOID        = registerBlock("crystal_void", () -> new Block(BlockBehaviour.Properties.of(Material.AMETHYST).sound(SoundType.AMETHYST).strength(1f).lightLevel(state -> 10).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+
     //Pearlescent Planes
     public static final RegistryObject<Block> PEARL_BLOCK        = registerBlock("pearl_block", () -> new Block(BlockBehaviour.Properties.of(Material.AMETHYST).sound(SoundType.AMETHYST).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
     public static final RegistryObject<Block> COMPRESSED_SAND    = registerBlock("compressed_sand", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHERRACK).strength(1f)), TBCreativeTab.THE_BEYOND);
                                             //BIOLUMINESCENT
-    public static final RegistryObject<Block> GLOW_SAND          = registerBlock("glow_sand", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHERRACK).strength(1f).lightLevel(state -> 13)), TBCreativeTab.THE_BEYOND);
-    public static final RegistryObject<Block> CLAM_CHUNK        = registerBlock("clam_chunk", () -> new ClamBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.DEEPSLATE_TILES).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
-    public static final RegistryObject<Block> MOTHER_OF_PEARL        = registerBlock("mother_of_pearl", () -> new MotherOfPearlBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.SHROOMLIGHT).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> GLOW_SAND            = registerBlock("glow_sand", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHERRACK).strength(1f).lightLevel(state -> 13)), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> CLAM_CHUNK           = registerBlock("clam_chunk", () -> new ClamBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.DEEPSLATE_TILES).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> MOTHER_OF_PEARL      = registerBlock("mother_of_pearl", () -> new MotherOfPearlBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.SHROOMLIGHT).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+
+    public static final RegistryObject<Block> PEARL_BRICKS         = registerBlock("pearl_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.AMETHYST).sound(SoundType.AMETHYST).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> CHISELED_PEARL       = registerBlock("chiseled_pearl", () -> new Block(BlockBehaviour.Properties.of(Material.AMETHYST).sound(SoundType.AMETHYST).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> SMOOTH_PEARL         = registerBlock("smooth_pearl", () -> new Block(BlockBehaviour.Properties.of(Material.AMETHYST).sound(SoundType.AMETHYST).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> PEARL_PILLAR         = registerBlock("pearl_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.AMETHYST).sound(SoundType.AMETHYST).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> COBBLED_PEARL        = registerBlock("cobbled_pearl", () -> new Block(BlockBehaviour.Properties.of(Material.AMETHYST).sound(SoundType.AMETHYST).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> COBBLED_PEARL_BRICKS = registerBlock("cobbled_pearl_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.AMETHYST).sound(SoundType.AMETHYST).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> SMOOTH_COBBLED_PEARL = registerBlock("smooth_cobbled_pearl", () -> new Block(BlockBehaviour.Properties.of(Material.AMETHYST).sound(SoundType.AMETHYST).strength(1f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
 
     //Magnetic Field
     public static final RegistryObject<Block> FERROUS_CATALYST   = registerBlock("ferrous_catalyst", () -> new FerrousCatalyst(BlockBehaviour.Properties.of(Material.METAL).strength(1.5f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
@@ -75,6 +87,31 @@ public class TBBlocks {
     //The Beyond
     public static final RegistryObject<Block> SINGULARITY_BRANCH = registerBlock("singularity_branch", () -> new SingularityBranch(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_PURPLE).strength(0.4F).sound(SoundType.SHROOMLIGHT).lightLevel(state -> 16)), TBCreativeTab.THE_BEYOND);
     public static final RegistryObject<Block> SINGULARITY_BLOCK  = registerBlock("singularity_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.SHROOMLIGHT).strength(3f).lightLevel(state -> 16).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+
+    //The Farlands
+
+    //Architecture
+    public static final RegistryObject<Block> ZELLIGE_TILES     = registerBlock("zellige_tiles", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.DEEPSLATE_TILES).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> PATTERNED_ZELLIGE = registerBlock("patterned_zellige", () -> new GlazedTerracottaBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.DEEPSLATE_TILES).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+
+    public static final RegistryObject<Block> LILIM_TILES       = registerBlock("lilim_tiles", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.CALCITE).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> CARVED_LILIM      = registerBlock("carved_lilim", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.CALCITE).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> GALVANIZED_LILIM  = registerBlock("galvanized_lilim", () -> new TBDirectionalBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHERITE_BLOCK).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> LILIM_FACADE      = registerBlock("lilim_facade", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.CALCITE).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> LILIM_PILLAR      = registerBlock("lilim_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.CALCITE).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+
+    public static final RegistryObject<Block> ZARDINE           = registerBlock("zardine", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.SCAFFOLDING).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> ZARDINE_STAIRS    = registerBlock("zardine_stairs", () -> new StairBlock(() -> ZARDINE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.SCAFFOLDING).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> PATTERNED_ZARDINE = registerBlock("patterned_zardine", () -> new GlazedTerracottaBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.SCAFFOLDING).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> ZARDINE_TILES     = registerBlock("zardine_tiles", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.SCAFFOLDING).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> ZARDINE_TRIM      = registerBlock("zardine_trim", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.SCAFFOLDING).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+
+    //public static final RegistryObject<Block> GALVANIZED_ROOF_TILES      = registerBlock("galvanized_roof_tiles", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.LANTERN).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> GALVANIZED_RESIN  = registerBlock("galvanized_resin", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.LANTERN).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+    public static final RegistryObject<Block> GALVANIZED_BISMUTH  = registerBlock("galvanized_bismuth", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.LANTERN).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+
+    public static final RegistryObject<Block> RESIN             = registerBlock("resin", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.TUFF).strength(3f).requiresCorrectToolForDrops()), TBCreativeTab.THE_BEYOND);
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
